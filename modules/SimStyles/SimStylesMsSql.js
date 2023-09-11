@@ -5,7 +5,6 @@ sql = require('mssql')
 
 class simstylesMsSql {
     async addstyle(simstyles) {
-        //const pool = new sql.ConnectionPool(dbConfig)
         const conn = await mssqlcon.getConnection();
         const res = await conn.request()
         .input("OracleStyleCode",simstyles.OracleStyleCode)
