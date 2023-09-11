@@ -1,14 +1,19 @@
+//sql.Int,sql.VarChar(2),sql.NVarChar(50),sql.Numeric(10,5),sql.DateTime
+
 const mssqlcon = require('../../dbconnection');
+sql = require('mssql')
 
 class simstylesMsSql {
-    async addstyle(simstyle) {
+    async addstyle(simstyles) {
+        //const pool = new sql.ConnectionPool(dbConfig)
         const conn = await mssqlcon.getConnection();
         const res = await conn.request()
-        .input("OracleStyleCode", simstyle.OracleStyleCode)
-        .input("OracleSimilarCode", simstyle.OracleSimilarCode)
-        .input("SimilarBody", simstyle.SimilarBody)
+        .input("OracleStyleCode",simstyles.OracleStyleCode)
+        .input("OracleSimilarCode", simstyles.OracleSimilarCode)
+        .input("SimilarBody", simstyles.SimilarBody)
+        .input('cTest',sql.VarChar(2),simstyles.Test)
         .execute("addsimstyle");
         return res;
      }
 }
-module.exports = new simstylesMsSql();
+module.exports = new simstylesMsSql(); 
