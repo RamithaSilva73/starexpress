@@ -2,14 +2,10 @@ const express = require('express');
 const router = express.Router();
 const mssqlcon = require('./../dbconnection');
 
-
-
 const jwt=require('jsonwebtoken')
-
 
 // allowed this api only if role=super
 // TODO -- DEVELOP remaining  routes
-
 
 require('dotenv').config();
 
