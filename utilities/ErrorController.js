@@ -4,7 +4,6 @@ const sqlError = require('./SQLErrorLog')
 module.exports = (error, req, res, next) => {
     error.statusCode = error.statusCode || 500;
     error.status = error.status || 'error';   
-    
     if (error.serverName==process.env.DBSERVER.toUpperCase()){
         res.status(error.statusCode).json({
             status : error.statusCode,
