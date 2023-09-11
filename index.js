@@ -4,11 +4,6 @@
 
 
  const app = require('./app');
-// const server = require('http').Server(app);
-
-// server.listen("443","0.0.0.0", ()=> {
-//    console.log('Server Started at port:'+"443");
-// });
 
 
 
