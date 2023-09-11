@@ -15,6 +15,23 @@ exports.addstyle= asyncErrorHandler(async(req, res,next) => {
 })
 
 
+/* const simstylesMssql = require('./simstylesMsSql')
+const validation = require('./SimStylesValidation')
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
+
+exports.addstyle= asyncErrorHandler(async(req, res,next) => {
+   const outVal = await validation.SimStylesValidation(req,res)  
+   console.log(outVal)
+   if(outVal.trim()!=='OK') {
+     const err = new customError(outVal,406)
+     return next(err) 
+   }
+   const output = await simstylesMssql.addstyle(req.body);
+   res.status(200).send(output);
+})
+ */
+
 /* class simstyles 
 {
  async addstyle(req, res) {
