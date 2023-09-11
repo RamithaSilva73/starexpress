@@ -3,8 +3,8 @@
 // non ssl
 
 
- const app = require('./app');
-
+const app = require('./app');
+var http = require('http');
 
 
 //non ssl
@@ -34,7 +34,8 @@ var httpServer = http.createServer(app);
 
 httpServer.listen("5050",()=>{
     console.log('HTTP Server Started at port:'+"5050");
-});
+}
+);
 /* httpsServer.listen("8443",()=>{
     console.log('HTTPS Server Started at port:'+"8443");
 });
