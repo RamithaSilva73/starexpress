@@ -26,6 +26,7 @@ module.exports = (error, req, res, next) => {
         stackTrace: error.stack,
         error: error
     }
+
     const jsnFile = JSON.stringify(newObj)
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
     const SQLErrorLog = require('./SQLErrorLog')

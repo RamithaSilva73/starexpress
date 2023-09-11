@@ -19,6 +19,8 @@ exports.addstyle= asyncErrorHandler(async(req, res,next) => {
   res.status(200).send(output);
 })
 
+
+
 /* class simstyles 
 {
  async addstyle(req, res) {
