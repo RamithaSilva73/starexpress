@@ -1,5 +1,4 @@
 const app = require('../app');
-const sqlError = require('./SQLErrorLog')
 
 module.exports = (error, req, res, next) => {
     error.statusCode = error.statusCode || 500;
