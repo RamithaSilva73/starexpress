@@ -12,7 +12,7 @@ class SQLErrorLog{
         this.addError()
     }
     
-    async addError(err){
+    async addError(){
         const conn = await mssqlcon.getConnection();
         const result =  await conn.request()
         .input("Method",this.method)
