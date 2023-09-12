@@ -1,19 +1,8 @@
-
-
 // non ssl
-
-
- const app = require('./app');
- const http =require('http')
-
-
+const app = require('./app');
+const http =require('http')
 //non ssl
-
-
-
-
 //ssl code
-
 /* var fs = require('fs');
 var http = require('http');
 var https = require('https');
