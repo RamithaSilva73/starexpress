@@ -9,7 +9,6 @@ class stylemasterController {
         router.put('/', stylemaster.updatestyle);
         router.delete('/:id', stylemaster.deletestyle);
         app.use('/api/v1/stylemaster', router);
-
     }
 }
 module.exports = stylemasterController;
