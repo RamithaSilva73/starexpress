@@ -1,8 +1,12 @@
 class Module {
-    constructor(app) {
+    constructor(app) 
+    {
        this.app = app;
     }
-   init() {
+   
+   init()
+   
+   {
     const productcontroller = require('./product/product.controller');
     new productcontroller(this.app);
 
@@ -12,14 +16,19 @@ class Module {
     const stylemastercontroller = require('./stylemaster/stylemaster.controller');
     new stylemastercontroller(this.app);
 
+
     const trimconsumptioncontroller = require('./trimconsumption/trimconsumption.controller');
     new trimconsumptioncontroller(this.app);
 
     const threadconsumptioncontroller = require('./threadconsumption/threadconsumption.controller');
     new threadconsumptioncontroller(this.app);
+
+    const similarstylecontroller = require('./SimStyles/SimStylesController');
+    new similarstylecontroller(this.app);
+
+
    }
   }
-  
 
- module.exports = Module
+  module.exports = Module
  

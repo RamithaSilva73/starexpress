@@ -1,7 +1,29 @@
-const simstylesMssql = require('./SimStylesMsSql');
-const oraclestyle = require('../../utilities/checkstyle')
+const simstylesMssql = require('./simstylesMsSql')
+const validation = require('./SimStylesValidation')
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
-class simstyles 
+exports.addstyle= asyncErrorHandler(async(req, res,next) => {
+  const outVal = await validation.SimStylesValidation(req,res)      
+  if(outVal==0) {
+    const err = new customError('Oracle Style Code Not Exists In Star Database',406)
+    return next(err) 
+  }
+
+
+  
+  /* if(outVal==1) {
+    const err = new customError('1st Test',406)
+    return next(err) 
+  } */
+  
+  const output = await simstylesMssql.addstyle(req.body);
+  res.status(200).send(output);
+})
+
+
+
+/* class simstyles 
 {
  async addstyle(req, res) {
    try 
@@ -21,6 +43,5 @@ class simstyles
       res.status(500).json(error);
    }
  } 
-}
-
-module.exports = new simstyles();
+} */
+//module.exports = new simstyles();
