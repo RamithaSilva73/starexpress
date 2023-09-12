@@ -1,5 +1,5 @@
 const trimconsumptionMSSql = require('./trimconsumption.mssql');
-
+console.log('4')
 
 class trimconsumption {
     async getAlltrimconsumption(req, res) {

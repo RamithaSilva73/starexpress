@@ -1,7 +1,7 @@
 const mssqlcon = require('../../dbconnection');
-class trimconsumptionMSSql {
-    
-  async getAlltrimconsumption() {
+class threadconsumptionMSSql {
+  
+  async getAllthreadconsumption() {
     const conn = await mssqlcon.getConnection();    
     var para = 'GET'
     console.log(para)
@@ -29,7 +29,7 @@ class trimconsumptionMSSql {
     return data;
   }
 
-  async getPendtrimconsumption() {
+  async getPendthreadconsumption() {
     const conn = await mssqlcon.getConnection();    
     var para = 'PEN'
     console.log(para)
@@ -56,44 +56,38 @@ class trimconsumptionMSSql {
     return data;
   }
 
-   async addtrimconsumption(trim) {
-    console.log('chk')
+   async addthreadconsumption(thrd) {
+    console.log('pp')
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("nTrackingNumber", trim.request.TrackingNumber)
-    .input("cTrimType", trim.request.TrimConsumptionType)
-    .input("nPocNumber", trim.request.POCNumber)
-    .input("nSampleDocNumber", trim.request.SampleDocumentNumber)
-    .input("cSampletype", trim.request.SampleType)
-    .input("cSampleLinecd", trim.request.SampleLineCode)
-    .input("cGarmntType", trim.request.GarmentType)
-    .input("cBuyingHouse", trim.request.BuyingHouse)
-    .input("cCustomer", trim.request.Customer)
-    .input("cBrand", trim.request.Brand)
-    .input("nStyleNumber", trim.request.StyleCode)
-    .input("cStyleName", trim.request.StyleNumber)
-    .input("cSeason", trim.request.Season)
-    .input("cMerchant", trim.request.MerchandiserName)
-    .input("cComment", trim.request.Comments) 
-   
-    .execute("addtrimconsumption");
+    console.log('pp')
+    .input("nTrackingNumber", thrd.request.TrackingNumber)
+    console.log('pptt')
+    .input("cMerchandiserName", thrd.request.MerchandiserName)
+    .input("cBuyingHouse", thrd.request.BuyingHouse)
+    .input("cCustomer", thrd.request.Customer)
+    .input("cBrand", thrd.request.Brand)
+    .input("cStyleCode", thrd.request.StyleCode)
+    .input("cStyleNumber", thrd.request.StyleNumber)
+    .input("cSeason", thrd.request.Season)   
+    .execute("addthreadconsumption");
 
       const p = trim.lines.length;
 
      for(let i = 0; i < trim.lines.length; i++){
       const res1 = await conn.request()
-      .input("nTrackingNumber", trim.request.TrackingNumber)
-      .input("cItemType", trim.lines[i].ItemType)
-      .input("cItemSpec", trim.lines[i].ItemSpecification)
-      .input("cPlacement", trim.lines[i].Placement)
-      .input("cSize", trim.lines[i].Size)
-      .input("cUOM", trim.lines[i].UOM)
-      .input("cConsumption", trim.lines[i].ConsumptionPerGarment)
-      .execute("addtrimconsumptiondtl");
+      .input("nTrackingNumber", thrd.request.TrackingNumber)
+      .input("nTicket", thrd.lines[i].Ticket)
+      .input("nTex", thrd.lines[i].Tex)
+      .input("nCount", thrd.lines[i].Count)
+      .input("cShade", thrd.lines[i].Shade)
+      .input("cPlacement", thrd.lines[i].Placement)
+      .input("cConsumption", thrd.lines[i].Consumption)
+      .execute("addthreadconsumptiondtl");
      } 
  
     return res;  
  }
 
 }
-module.exports = new trimconsumptionMSSql();
+module.exports = new threadconsumptionMSSql();

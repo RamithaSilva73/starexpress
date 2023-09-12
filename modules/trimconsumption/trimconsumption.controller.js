@@ -4,9 +4,9 @@ const router = express.Router();
 
 class trimconsumptioncontroller {
     constructor(app) {
-        router.get('/', trimconsumption.getAlltrimconsumption);
+        router.get('/Completed', trimconsumption.getAlltrimconsumption);
         router.post('/', trimconsumption.addtrimconsumption);                 
-        router.get('/pending', trimconsumption.getPendtrimconsumption);
+        router.get('/', trimconsumption.getPendtrimconsumption);
         
      //   router.put('/', stylemaster.updatestyle);
      //   router.delete('/:id', stylemaster.deletestyle);

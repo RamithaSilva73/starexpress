@@ -12,6 +12,11 @@ class Module {
     const stylemastercontroller = require('./stylemaster/stylemaster.controller');
     new stylemastercontroller(this.app);
 
+    const trimconsumptioncontroller = require('./trimconsumption/trimconsumption.controller');
+    new trimconsumptioncontroller(this.app);
+
+    const threadconsumptioncontroller = require('./threadconsumption/threadconsumption.controller');
+    new threadconsumptioncontroller(this.app);
    }
   }
   
