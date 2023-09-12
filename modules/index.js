@@ -7,16 +7,7 @@ class Module {
    init()
    
    {
-    const productcontroller = require('./product/product.controller');
-    new productcontroller(this.app);
-
-    //const ordercontroller = require('./order/order.controller');
-    //new ordercontroller(this.app);
-
-    const stylemastercontroller = require('./stylemaster/stylemaster.controller');
-    new stylemastercontroller(this.app);
-
-
+ 
    const CustomerMasterController=require('./CustomerMaster/CustomerMaster.controller');
    new CustomerMasterController(this.app);
    
@@ -32,9 +23,6 @@ class Module {
    const StyleMasterFileController=require('./StyleMasterFile/StyleMasterController');
    new StyleMasterFileController(this.app);
    
-
-
-
     const trimconsumptioncontroller = require('./trimconsumption/trimconsumption.controller');
     new trimconsumptioncontroller(this.app);
 
