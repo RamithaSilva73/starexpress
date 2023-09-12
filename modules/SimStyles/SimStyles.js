@@ -11,12 +11,6 @@ exports.addstyle= asyncErrorHandler(async(req, res,next) => {
   }
 
 
-  
-  /* if(outVal==1) {
-    const err = new customError('1st Test',406)
-    return next(err) 
-  } */
-  
   const output = await simstylesMssql.addstyle(req.body);
   res.status(200).send(output);
 })
