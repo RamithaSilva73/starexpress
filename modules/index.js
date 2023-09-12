@@ -33,7 +33,6 @@ class Module {
     new similarstylecontroller(this.app);
 
 
-
    }
   }
 
