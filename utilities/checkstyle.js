@@ -1,4 +1,4 @@
-const mssqlcon = require("../dbconnection")
+/* const mssqlcon = require("../dbconnection")
 
 class CheckStyle
 {
@@ -14,3 +14,4 @@ class CheckStyle
     }
 }
 module.exports = new CheckStyle(); 
+ */

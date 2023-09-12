@@ -10,7 +10,7 @@ class simstylesMsSql {
         .input("OracleStyleCode",simstyles.OracleStyleCode)
         .input("OracleSimilarCode", simstyles.OracleSimilarCode)
         .input("SimilarBody", simstyles.SimilarBody)
-        .input('cTest',sql.VarChar(2),simstyles.Test)
+        //.input('cTest',sql.VarChar(2),simstyles.Test)
         .execute("addsimstyle");
         return res;
      }
