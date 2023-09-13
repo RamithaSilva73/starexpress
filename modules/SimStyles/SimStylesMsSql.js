@@ -7,6 +7,7 @@ class simstylesMsSql {
     async addstyle(simstyles) {
         const conn = await mssqlcon.getConnection();
         const res = await conn.request()
+        .input("cTransactionType",sql.VarChar(1),simstyles.TransactionType)
         .input("OracleStyleCode",simstyles.OracleStyleCode)
         .input("OracleSimilarCode", simstyles.OracleSimilarCode)
         .input("SimilarBody", simstyles.SimilarBody)
