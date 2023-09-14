@@ -15,7 +15,7 @@ class DBConnection {
                 trustedConnection: true,
                 enableArithAbort: true,
                 trustServerCertificate: true,
-                encrypt:false 
+                encrypt: true
               },
               
               port:1433
