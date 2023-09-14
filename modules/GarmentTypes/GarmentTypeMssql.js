@@ -1,4 +1,6 @@
 const mssqlcon=require('../../dbconnection');
+const sqlDval=require('mssql');
+
 
 class GarmentTypesMssql
 {

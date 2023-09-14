@@ -1,4 +1,5 @@
 const mssqlcon=require('../../dbconnection');
+sqlDval=require('mssql');
 
 class CustomerMasterMssql
 {
@@ -20,18 +21,14 @@ class CustomerMasterMssql
         .input("GroupName", Customers.GroupName)
         .execute("addCustomerMaster");
 
-        //.input("cTransactionType",Customers.TransactionType)
-        //.input("cSpoCode",Customers.SPOCode )
-        //.input("cDescription", Customers.SPODescription)
-        //.execute("AddSpecialOperation");
-        //return res;   
+        return res;   
 
        //return 'RecordsEffected';
        
-       var affected={'RecordsEffected':res};
+       //var affected={'RecordsEffected':res};
 
         //var affected = {'RecordsEffected':res.rowsAffected[0] };
-        return affected;    
+        //return affected;    
     }
 }
 
