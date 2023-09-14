@@ -34,10 +34,18 @@ var credentials = {key: privateKey, cert: certificate};
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
+<<<<<<< Updated upstream
 httpServer.listen("8080",()=>{
     console.log('HTTP Server Started at port:'+"8080");
 });
 httpsServer.listen("8443",()=>{
+=======
+ httpServer.listen("5050",()=>{
+    console.log('HTTP Server Started at port:'+"5050");
+}); 
+
+/* httpsServer.listen("8443",()=>{
+>>>>>>> Stashed changes
     console.log('HTTPS Server Started at port:'+"8443");
 });
 

@@ -1,58 +1,16 @@
+
 const SewsummaryMssql = require('./Sewsummary.mssql');
+const validation = require('./SewsummaryValidation');
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
+exports.addSewsummary= asyncErrorHandler(async(req, res,next) => {
+   const outVal = await validation.SewsummaryValidation(req,res)  
 
-class Sewsummaryclass {
-    async getAllSewsummary(req, res) {
-      try {
-
-         const output=await SewsummaryMssql.getAllSewsummaryfunction();
-         res.send(output);
-         
-      }
-      catch (error) {
-      res.status(500).json(error)
-
-      //console.log(error);
-    }
- }
-
- /* async addstyle(req, res) {
-   try {
-     const output = await stylemasterMssql.addstyle(req.body);
-     res.status(200).send(output);
+   if(outVal.trim()!=='OK') {
+     const err = new customError(outVal,406)
+     return next(err) 
    }
-   catch (error) {
-    res.status(500).json(error);
-   }
- }
-
- 
- async updatestyle(req, res) {
-   try {
-     const output = await stylemasterMssql.updatestyle(req.body);
-     res.status(200).send(output);
-  }
-  catch (error) {
-  //console.log(error);
-  res.status(500).json(error)
- }
- }
- async deletestyle(req, res) {
-    const id = req.params.id;
-    try {
-     if (!id) {
-      res.status(400).send('id is not passed')
-      //console.log('id is not passed');
-     }
-     const output = await stylemasterMssql.deletestyle(id);
-     res.status(200).send(output);
-    }
-    catch (error) {
-      res.status(500).json(error)
-    }
-  } */
-
-
-
-}
-module.exports = new Sewsummaryclass();
+   const output = await SewsummaryMssql.addSewsummary(req.body);
+   res.status(200).send(output);
+})
