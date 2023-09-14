@@ -5,6 +5,8 @@ const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
 exports.addstyle= asyncErrorHandler(async(req, res,next) => {
   const outVal = await validation.SimStylesValidation(req,res)      
+
+
   if(outVal==0) {
     const err = new customError('Oracle Style Code Not Exists In Star Database',406)
     return next(err) 
