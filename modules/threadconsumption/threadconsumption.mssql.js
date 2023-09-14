@@ -2,12 +2,13 @@ const mssqlcon = require('../../dbconnection');
 class threadconsumptionMSSql {
   
   async getAllthreadconsumption() {
+    console.log(124)
     const conn = await mssqlcon.getConnection();    
     var para = 'GET'
     console.log(para)
     const res1 = await conn.request()
     .input("cTyp",para)
-    .execute("GetAllHdgettrimconsumption");
+    .execute("GetAllHdgethreadconsumption");
     const scount = res1.recordsets[0].length
     var data = []
     console.log(scount)
@@ -17,7 +18,7 @@ class threadconsumptionMSSql {
          console.log(dtl)
         const res2 = await conn.request()
         .input("nTrackNo",dtl)
-        .execute("GetAllDTgettrimconsumption");
+        .execute("GetAllDTgetthreadconsumption");
         res1.lines = res2
         data.push({
           'request':res1.recordset[i],
@@ -25,7 +26,7 @@ class threadconsumptionMSSql {
 
         }) 
       }
-    const res3 = await conn.request().execute("DelAllgettrimconsumption");
+    const res3 = await conn.request().execute("DelAllgetthrdconsumption");
     return data;
   }
 
@@ -35,7 +36,7 @@ class threadconsumptionMSSql {
     console.log(para)
     const res1 = await conn.request()
     .input("cTyp",para)
-    .execute("GetAllHdgettrimconsumption");
+    .execute("GetAllHdgethreadconsumption");
     const scount = res1.recordsets[0].length
     var data = []
     console.log(scount)
@@ -45,7 +46,7 @@ class threadconsumptionMSSql {
          console.log(dtl)
         const res2 = await conn.request()
         .input("nTrackNo",dtl)
-        .execute("GetAllDTgettrimconsumption");
+        .execute("GetAllDTgetthreadconsumption");
         res1.lines = res2
         data.push({
           'request':res1.recordset[i],
@@ -57,32 +58,27 @@ class threadconsumptionMSSql {
   }
 
    async addthreadconsumption(thrd) {
-    console.log('pp')
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    console.log('pp')
-    .input("nTrackingNumber", thrd.request.TrackingNumber)
-    console.log('pptt')
-    .input("cMerchandiserName", thrd.request.MerchandiserName)
-    .input("cBuyingHouse", thrd.request.BuyingHouse)
-    .input("cCustomer", thrd.request.Customer)
-    .input("cBrand", thrd.request.Brand)
-    .input("cStyleCode", thrd.request.StyleCode)
-    .input("cStyleNumber", thrd.request.StyleNumber)
-    .input("cSeason", thrd.request.Season)   
+    .input("nTrackingNumber", thrd.Request.TrackingNumber)
+    .input("cMerchandiserName", thrd.Request.MerchandiserName)
+    .input("cBuyingHouse", thrd.Request.BuyingHouse)
+    .input("cCustomer", thrd.Request.Customer)
+    .input("cBrand", thrd.Request.Brand)
+    .input("cStyleCode", thrd.Request.StyleCode)
+    .input("cStyleNumber", thrd.Request.StyleNumber)
+    .input("cSeason", thrd.Request.Season)  
     .execute("addthreadconsumption");
-
-      const p = trim.lines.length;
-
-     for(let i = 0; i < trim.lines.length; i++){
+      const p = thrd.Lines.length;
+     for(let i = 0; i < p; i++ ){
       const res1 = await conn.request()
-      .input("nTrackingNumber", thrd.request.TrackingNumber)
-      .input("nTicket", thrd.lines[i].Ticket)
-      .input("nTex", thrd.lines[i].Tex)
-      .input("nCount", thrd.lines[i].Count)
-      .input("cShade", thrd.lines[i].Shade)
-      .input("cPlacement", thrd.lines[i].Placement)
-      .input("cConsumption", thrd.lines[i].Consumption)
+      .input("nTrackingNumber", thrd.Request.TrackingNumber)
+      .input("nTicket", thrd.Lines[i].Ticket)
+      .input("nTex", thrd.Lines[i].Tex)
+      .input("nCount", thrd.Lines[i].Count)
+      .input("cShade", thrd.Lines[i].Shade)
+      .input("cPlacement", thrd.Lines[i].Placement)
+      .input("nConsumption", thrd.Lines[i].Consumption) 
       .execute("addthreadconsumptiondtl");
      } 
  
