@@ -12,7 +12,6 @@ exports.addstyle= asyncErrorHandler(async(req, res,next) => {
     return next(err) 
   }
 
-
   const output = await simstylesMssql.addstyle(req.body);
   res.status(200).send(output);
 })
