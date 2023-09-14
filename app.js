@@ -2,6 +2,8 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const app = express();
 const auth=require('./middleware/auth')
+const customError = require('./utilities/CustomError')
+const globalErrorHandler = require('./utilities/ErrorController')
 var cors = require('cors')
 
 
@@ -28,11 +30,22 @@ async function init() {
    users=require('./utilities/users')
    app.use('/api/v1/users',users)
 
+   /* app.all('*',(req,res,next)=>{
+      // res.status(404).json({
+      //    status:'Fail',
+      //    message : 'Can Not Find The The URL'
+      const err = new customError('Can Not Find The The URL',404)
+      next(err)
+   }); */
+
    const approuting = require('./modules');
    const appmodules = new approuting(app);
    appmodules.init();
 }
 init();
+app.use(globalErrorHandler)
+
+
 module.exports = app;
 
 

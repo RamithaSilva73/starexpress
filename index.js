@@ -4,12 +4,7 @@
 
 
  const app = require('./app');
-// const server = require('http').Server(app);
-
-// server.listen("443","0.0.0.0", ()=> {
-//    console.log('Server Started at port:'+"443");
-// });
-
+ const http =require('http')
 
 
 //non ssl
@@ -19,34 +14,26 @@
 
 //ssl code
 
-var fs = require('fs');
-var http = require('http');
-var https = require('https');
-var privateKey  = fs.readFileSync('sslcert/newpkey.key', 'utf8');
-var certificate = fs.readFileSync('sslcert/www_stargarments_lk.crt', 'utf8');
+/* var fs = require('fs');
 
-var credentials = {key: privateKey, cert: certificate};
+
+
+//var credentials = {key: privateKey, cert: certificate};
 //const express = require('express');
 //const app = express();
+
 
 // your express configuration here
 
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+//var httpsServer = https.createServer(credentials, app);
 
-<<<<<<< Updated upstream
-httpServer.listen("8080",()=>{
-    console.log('HTTP Server Started at port:'+"8080");
-});
-httpsServer.listen("8443",()=>{
-=======
- httpServer.listen("5050",()=>{
+
+
+
+
+httpServer.listen("5050",()=>{
     console.log('HTTP Server Started at port:'+"5050");
-}); 
-
-/* httpsServer.listen("8443",()=>{
->>>>>>> Stashed changes
-    console.log('HTTPS Server Started at port:'+"8443");
 });
 
 

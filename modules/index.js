@@ -1,18 +1,39 @@
 //const IswSummaryController = require('./IswSummary/IswSummaryController');
 
 class Module {
-    constructor(app) {
+    constructor(app) 
+    {
        this.app = app;
     }
-   init() {
-    const productcontroller = require('./product/product.controller');
-    new productcontroller(this.app);
+   
+   init()
+   
+   {
+ 
+   const CustomerMasterController=require('./CustomerMaster/CustomerMaster.controller');
+   new CustomerMasterController(this.app);
+   
+   const GarmentTypeController=require('./GarmentTypes/GarmentTypeController');
+   new GarmentTypeController(this.app);
 
-    //const ordercontroller = require('./order/order.controller');
-    //new ordercontroller(this.app);
+   const AddFactoryController = require('./FactoryMaster/FactoryController');
+   new AddFactoryController(this.app);
 
-    const stylemastercontroller = require('./stylemaster/stylemaster.controller');
-    new stylemastercontroller(this.app);
+   const AddSpecialOparation=require('./SpecialOperation/SpecialOperationController');
+   new AddSpecialOparation(this.app);
+
+   const StyleMasterFileController=require('./StyleMasterFile/StyleMasterController');
+   new StyleMasterFileController(this.app);
+   
+    const trimconsumptioncontroller = require('./trimconsumption/trimconsumption.controller');
+    new trimconsumptioncontroller(this.app);
+
+    const threadconsumptioncontroller = require('./threadconsumption/threadconsumption.controller');
+    new threadconsumptioncontroller(this.app);
+
+    const similarstylecontroller = require('./SimStyles/SimStylesController');
+    new similarstylecontroller(this.app);
+
 
     const SewsummaryController = require('./SewSummary/Sewsummary.controller');
     new SewsummaryController(this.app); 
@@ -51,8 +72,10 @@ class Module {
     new LotMasterDataController(this.app);
     
    }
+
 }
   
 
- module.exports = Module
+
+  module.exports = Module
  
