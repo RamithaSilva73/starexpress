@@ -4,6 +4,7 @@ const customError = require('./../../utilities/CustomError')
 const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
 exports.addstyle= asyncErrorHandler(async(req, res,next) => {
+
   const outVal = await validation.SimStylesValidation(req,res)      
 
 
@@ -14,6 +15,7 @@ exports.addstyle= asyncErrorHandler(async(req, res,next) => {
 
   const output = await simstylesMssql.addstyle(req.body);
   res.status(200).send(output);
+
 })
 
 
