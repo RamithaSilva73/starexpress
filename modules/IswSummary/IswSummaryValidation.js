@@ -2,7 +2,7 @@ const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
-    async SewsummaryValidation(req,res)
+    async IswSummaryValidation(req,res)
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
@@ -10,9 +10,9 @@ class CheckStyle
         .input("oraclestylecode",req.body.StyleCode)
         .input("Line",req.body.LineNo)
         .input("LotName",req.body.Lot)
-        .input("FacCD",req.body.FacCD)
+        .input("FacCd",req.body.FacCd)
         .output("stylematch",0)
-        .execute("SewsummaryValidation")
+        .execute("IswsummaryValidation")
 
         return result.output.stylematch
     }
