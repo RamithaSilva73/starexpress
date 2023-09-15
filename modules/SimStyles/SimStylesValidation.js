@@ -8,6 +8,7 @@ class CheckStyle
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
         .input("oraclestylecode",req.body.OracleStyleCode)
+        .input("OracleSimilarCode",req.body.OracleSimilarCode)
         .output("stylematch",0)
         .execute("simStylesValidation")
 
