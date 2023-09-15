@@ -4,8 +4,6 @@ const router = express.Router();
 
 const mssqlcon = require('./../dbconnection');
 
- 
-
 const jwt=require('jsonwebtoken')
 
 require('dotenv').config();
@@ -17,7 +15,6 @@ require('dotenv').config();
         }
     })
 
- 
   async function checkUser(req,res){
     const output = await checkUserExist(req,res);
 
@@ -34,19 +31,14 @@ require('dotenv').config();
 
  
 
-   
 
    async function checkUserExist(req,res) {
     const conn = await mssqlcon.getConnection();
 
     const result = await conn.request()
-
     .input("username", req.body.username)
-
     .input("password", req.body.password)
-
     .output("usermatch",0)
-
     .execute("spUserCheck");
     return result.output.usermatch
   }
