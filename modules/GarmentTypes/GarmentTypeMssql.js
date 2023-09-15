@@ -1,5 +1,5 @@
 const mssqlcon=require('../../dbconnection');
-const sqlDval=require('mssql');
+sql=require('mssql');
 
 
 class GarmentTypesMssql
@@ -11,14 +11,19 @@ async AddGarmentTypes(GarmentType)
     const conn = await mssqlcon.getConnection();
     
     const res=await conn.request()
-    .input("cTransactionType",GarmentType.Transactiontype)
-    .input("cGarmentGroup",GarmentType.GarmentGroup )
-    .input("cGarmentCode", GarmentType.GarmentCode)
-    .input("cGarmentType", GarmentType.GarmentType )
-    .input("cMainGmtType", GarmentType.MainGmtType)
-    .input("cGmtType",GarmentType.GmtType)
+    .input("cTransactionType",sql.VarChar(1),GarmentType.Transactiontype)
+    .input("cGarmentGroup",sql.VarChar(15),GarmentType.GarmentGroup )
+    .input("cGarmentCode",sql.VarChar(5),GarmentType.GarmentCode)
+    .input("cGarmentType",sql.VarChar(20),GarmentType.GarmentType )
+    .input("cMainGmtType",sql.VarChar(20),GarmentType.MainGmtType)
+    .input("cGmtType",sql.VarChar(20),GarmentType.GmtType)
     .execute("addGarmentTypes");
-    return res;
+    //return res;
+
+    var affected={'RecordsEffected':[res.rowsAffected[0]]}
+
+    return affected;    
+
     }
 }
 

@@ -1,20 +1,19 @@
 const GarmentTypesMssql=require('./GarmentTypeMssql');
 
-class GarmentTypes{
+const validation = require('./GarmentTypeValication')
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
-    async addGarmentTypes(req,res){
-        try{
-            const output=await GarmentTypesMssql.AddGarmentTypes(req.body);
-            res.status(200 ).send(output);
+exports.addGarmentTypes= asyncErrorHandler(async(req, res,next) => {
+  const outVal = await validation.GarmentTypeValidation(req,res)      
 
-        }
-        catch (error) {
-                res.status(500).json(error);
-                //console.error('API Error:', error.message);
 
-        }
-    }
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
+  }
 
-}
+  const output = await GarmentTypesMssql.AddGarmentTypes(req.body);
+  res.status(200).send(output);
+})
 
-module.exports=new GarmentTypes();
