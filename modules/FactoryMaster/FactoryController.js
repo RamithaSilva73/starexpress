@@ -7,7 +7,7 @@ class AddFactoryController{
 
     constructor(app){
         router.post('/',StarFactory.addFactory);
-        router.get('/',StarFactory.getAllFactory);
+       // router.get('/',StarFactory.getAllFactory);
         app.use('/api/v1/idesk/factory',router);
     }
 
