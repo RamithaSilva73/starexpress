@@ -18,10 +18,10 @@ async AddGarmentTypes(GarmentType)
     .input("cMainGmtType",sql.VarChar(20),GarmentType.MainGmtType)
     .input("cGmtType",sql.VarChar(20),GarmentType.GmtType)
     .execute("addGarmentTypes");
-    //return res;
+   // return res;
 
-    var affected={'RecordsEffected':[res.rowsAffected[0]]}
-
+   //var affected=res.rowsAffected[0]
+   var affected={'RecordsEffected':[res.rowsAffected[0]]}
     return affected;    
 
     }
