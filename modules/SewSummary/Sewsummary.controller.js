@@ -6,7 +6,7 @@ class SewsummaryController {
     constructor(app) {
       
 
-        router.get('/', Sewsummary1.getAllSewsummary);
+        router.post('/', Sewsummary1.addSewsummary);
     
        app.use('/api/v1/Sewsummary', router);
         

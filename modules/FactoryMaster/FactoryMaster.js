@@ -1,33 +1,41 @@
 const FactoryMasterMssql=require('./FactoryMasterMssql');
 
-class Factory{
+const validation = require('./FactoryValidation')
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
-    async addFactory(req,res){
+exports.addFactory= asyncErrorHandler(async(req, res,next) => {
+  const outVal = await validation.FactoryValidation(req,res)      
 
-        
-        try{
-            const output =await FactoryMasterMssql.AddFactory(req.body);
-            res.status(200).json(output);
-        }
-        catch (error) {
-            console.log(error);
-            res.status(500).json(error);
 
-        }
-    }
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
+  }
 
-    async getAllFactory(req,res) {
+  const output = await FactoryMasterMssql.AddFactory(req.body);
+  res.status(200).send(output);
+})
 
-        try {
-            const output=await FactoryMasterMssql.getAllFactores();
-            res.send(output);
-        }
 
-        catch(error){
-            res.status(500).json(error)
-        }
 
-    }
-}
 
-module.exports = new Factory();
+///
+//class Factory{
+//
+//  
+//    async getAllFactory(req,res) {
+//
+//        try {
+//            const output=await FactoryMasterMssql.getAllFactores();
+//            res.send(output);
+//        }
+//
+//        catch(error){
+//            res.status(500).json(error)
+//        }
+//
+//    }
+//}
+//
+//module.exports = new Factory();

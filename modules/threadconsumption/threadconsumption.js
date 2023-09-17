@@ -2,19 +2,19 @@ const threadconsumptionMSSql = require('./threadconsumption.mssql');
 class threadconsumption {
     async getAllthreadconsumption(req, res) {
       try {
-         const output = await threadconsumptionMSSql.getAlltrimconsumption();
+        console.log(123)
+         const output = await threadconsumptionMSSql.getAllthreadconsumption();
          res.send(output);   
       }
       catch (error) {
-      res.status(500).json(error)
+      res.status(500).json(error)     
     }
  }
 
  async getPendthreadconsumption(req, res) {
   try {
      const output = await threadconsumptionMSSql.getPendthreadconsumption();
-     res.send(output);
-     
+     res.send(output);     
   }
   catch (error) {
   res.status(500).json(error)

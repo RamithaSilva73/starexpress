@@ -1,16 +1,16 @@
-const mssqlcon = require("./../../dbconnection")
+const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
-    async SimStylesValidation(req,res)
+    async SampleSubValidation(req,res)
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
-        .input("oraclestylecode",req.body.OracleStyleCode)
-        .input("OracleSimilarCode",req.body.OracleSimilarCode)
+        .input("SampleTypeCode",req.body.SampleTypeCode)
         .output("stylematch",0)
-        .execute("simStylesValidation")
+        .execute("SampleSubmisstionValidation")
+
         return result.output.stylematch
     }
 }

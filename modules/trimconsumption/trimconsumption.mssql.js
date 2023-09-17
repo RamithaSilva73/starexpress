@@ -2,6 +2,7 @@ const mssqlcon = require('../../dbconnection');
 class trimconsumptionMSSql {
     
   async getAlltrimconsumption() {
+    
     const conn = await mssqlcon.getConnection();    
     var para = 'GET'
     console.log(para)

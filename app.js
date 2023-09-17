@@ -43,7 +43,8 @@ async function init() {
    appmodules.init();
 }
 init();
-app.use(globalErrorHandler)
+//app.use(globalErrorHandler)
+
 
 module.exports = app;
 
