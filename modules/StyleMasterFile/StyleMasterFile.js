@@ -1,21 +1,21 @@
 //const GarmentTypesMssql=require('./GarmentTypeMssql');
 const StyleMasterFileMssql=require('./StyleMasterMssql');
 
-class StyleMasterFile{
 
-    async addNewStyle(req,res){
-        try{
-            const output=await StyleMasterFileMssql.addNewStyle (req.body);
-            res.status(200 ).send(output);
 
-        }
-        catch (error) {
-                res.status(500).json(error);
-                //console.error('API Error:', error.message);
+const validation = require('./StyleMasterValidation')
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
-        }
-    }
+exports.addNewStyle= asyncErrorHandler(async(req, res,next) => {
+  const outVal = await validation.StyleMasterValidation(req,res)      
 
-}
 
-module.exports=new StyleMasterFile();
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
+  }
+
+  const output = await StyleMasterFileMssql.addNewStyle(req.body);
+  res.status(200).send(output);
+})

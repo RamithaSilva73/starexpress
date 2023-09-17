@@ -1,5 +1,5 @@
 const mssqlcon=require('../../dbconnection');
-sqlDval=require('mssql');
+sql=require('mssql');
 
 class CustomerMasterMssql
 {
@@ -10,25 +10,24 @@ class CustomerMasterMssql
         const conn=await mssqlcon.getConnection();
         const res=await conn.request()
 
-        .input("TransactionType",Customers.TransactionType)
-        .input("DivisionName",Customers.DivisionName)
-        .input("AccountManager", Customers.AccountManager)
-        .input("AccountNo",Customers.AccountNo)
-        .input("AccountName",Customers.AccountName)
+        .input("TransactionType",sql.VarChar(1),Customers.TransactionType)
+        .input("DivisionName",sql.VarChar(35),Customers.DivisionName)
+        .input("AccountManager",sql.VarChar(30), Customers.AccountManager)
+        .input("AccountNo",sql.VarChar(5),Customers.AccountNo)
+        .input("AccountName",sql.VarChar(40),Customers.AccountName)
         .input("Active", Customers.Active)
-        .input("SampleRoom",Customers.SampleRoom)
-        .input("Owner",Customers.Owner)
-        .input("GroupName", Customers.GroupName)
+        .input("SampleRoom",sql.VarChar(20),Customers.SampleRoom)
+        .input("Owner",sql.VarChar(10),Customers.Owner)
+        .input("GroupName",sql.VarChar(30), Customers.GroupName)
         .execute("addCustomerMaster");
 
-        return res;   
+        //return res;   
 
-       //return 'RecordsEffected';
-       
-       //var affected={'RecordsEffected':res};
+        var affected={'RecordsEffected':[res.rowsAffected[0]]}
 
-        //var affected = {'RecordsEffected':res.rowsAffected[0] };
-        //return affected;    
+        return affected;    
+
+    
     }
 }
 
