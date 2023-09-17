@@ -59,7 +59,5 @@ async getHistoryStyles(){
 }
 
 
-
-
 module.exports=new StyleMasterMssql();
 
