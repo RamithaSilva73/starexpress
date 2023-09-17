@@ -4,12 +4,8 @@ class StyleMasterMssql{
 
 async addNewStyle(NewStyle)
 {
-
-   
     const conn = await mssqlcon.getConnection();
     const res=await conn.request()
-    //.input("cTransactionType",NewStyleAdd.transactiontype)
-    //.execute("AddSpecialOperation");
 
     .input("cTransactionType",NewStyle.transactiontype)
     .input("cStyleNumber",NewStyle.StyleNumber)
@@ -48,7 +44,17 @@ async addNewStyle(NewStyle)
     
     return res;
 }
+
+async getHistoryStyles(){
+    const conn = await mssqlcon.getConnection();
+    const res = await conn.request().execute("getStyleMasterHistory");
+    return res.recordset;
 }
+
+}
+
+
+
 
 module.exports=new StyleMasterMssql();
 

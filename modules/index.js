@@ -25,6 +25,11 @@ class Module {
    const StyleMasterFileController=require('./StyleMasterFile/StyleMasterController');
    new StyleMasterFileController(this.app);
    
+
+   const StyleMasterFileController=require('./StyleMaster/StyleMaster.Controller');
+   new StyleMasterFileController(this.app);
+   
+
     const trimconsumptioncontroller = require('./trimconsumption/trimconsumption.controller');
     new trimconsumptioncontroller(this.app);
 
