@@ -1,4 +1,4 @@
-const simstylesMssql = require('./simstylesMsSql')
+const simstylesMssql = require('./SimStylesMsSql')
 const validation = require('./SimStylesValidation')
 const customError = require('./../../utilities/CustomError')
 const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
