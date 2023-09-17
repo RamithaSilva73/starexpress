@@ -6,13 +6,10 @@ class CheckStyle
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
-
         .input("TransactionType",req.body.TransactionType)
-
         .input("oraclestylecode",req.body.OracleStyleCode)
         .output("stylematch",0)
         .execute("simStylesValidation")
-
         return result.output.stylematch
     }
 }
