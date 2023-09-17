@@ -40,6 +40,7 @@ class Module {
     const IswSummaryController =require('./IswSummary/IswSummaryController');
     new IswSummaryController(this.app);
 
+
     const LotMasterDataController=require('./LotMasterData/LotMasterDataController');
     new LotMasterDataController(this.app);
 
@@ -54,8 +55,19 @@ class Module {
 
     const SewsummaryController=require('./SewSummary/Sewsummary.controller');
     new SewsummaryController(this.app)
+  
+    const SampleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
+    new SampleSubmissionController(this.app);
+
+    const LotMasterDataController=require('./LotMasterData/LotMasterDataController');
+    new LotMasterDataController(this.app);
+
+
     
-   }
+
+
+   }  
+
 
 }
   
