@@ -2,17 +2,15 @@ const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
-    async SewsummaryValidation(req,res)
+    async LotMasterValidation(req,res)
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
         .input("oraclestylecode",req.body.StyleCode)
-        .input("Line",req.body.LineNo)
-        .input("LotName",req.body.Lot)
-        .input("FacCD",req.body.FacCD)
+        .input("LotName",req.body.LotName)
         .output("stylematch",0)
-        .execute("SewsummaryValidation")
+        .execute("LotMasterValidation")
 
         return result.output.stylematch
     }

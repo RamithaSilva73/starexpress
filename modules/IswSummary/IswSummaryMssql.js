@@ -5,7 +5,7 @@ class IswSummaryMssql {
   async addIswSummary(style) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("Transaction", style.Transaction)
+    .input("Transaction", style.TransactionType)
     .input("FacCd", style.FacCd)
     .input("LineNo", style.LineNo)
     .input("StyleCode", style.StyleCode)
