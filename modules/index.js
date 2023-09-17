@@ -64,9 +64,7 @@ class Module {
     const SampleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
     new SampleSubmissionController(this.app);
 
-    const LotMasterDataController=require('./LotMasterData/LotMasterDataController');
-    new LotMasterDataController(this.app);
-
+    
 
     
 
