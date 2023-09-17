@@ -32,6 +32,8 @@ class Module {
     const similarstylecontroller = require('./SimStyles/SimStylesController');
     new similarstylecontroller(this.app);
 
+    const AssetGrnController=require('./AssetGRN/AssetGrn.controller');
+    new AssetGrnController(this.app);
 
    }
   }

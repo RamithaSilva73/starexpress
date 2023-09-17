@@ -9,10 +9,7 @@ async addNewStyle(NewStyle)
    
     const conn = await mssqlcon.getConnection();
     const res=await conn.request()
-    //.input("cTransactionType",NewStyleAdd.transactiontype)
-    //.execute("AddSpecialOperation");
-    //sql.Int,sql.VarChar(2),sql.NVarChar(50),sql.Numeric(10,5),sql.DateTime
-
+   
     .input("cTransactionType",sql.VarChar(1),NewStyle.transactiontype)
     .input("cStyleNumber",sql.VarChar(25),NewStyle.StyleNumber)
     .input("cAccountNumber",sql.VarChar(5),NewStyle.AccountNumber)  
