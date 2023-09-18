@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const mssqlcon = require('./../dbconnection');
-
 const jwt=require('jsonwebtoken')
 
 // allowed this api only if role=super
@@ -59,29 +58,17 @@ require('dotenv').config();
 
     async function updateUser(req,res){
         try{
-            const output = await getUserRole(req,res);
-            if (output=="super"){
-
-                const conn = await mssqlcon.getConnection();
-                const res = await conn.request()
-                .input("username", req.body.username)
-                .input("password", req.body.password)
-                .input("role", req.body.role)
-                .execute("addUser");
-                return res;
-
-            }
-            else
-            {
-                res.send("Only the super user allowed adding users")
-            }
+            const conn = await mssqlcon.getConnection();
+            const res = await conn.request()
+            .input("username", req.body.username)
+            .input("password", req.body.password)
+            .execute("spUpdateUser");
+            return res;
         }catch(error){
             res.send(error)
         }
         
     }
-
-
 
 
     async function getuser(req,res){
