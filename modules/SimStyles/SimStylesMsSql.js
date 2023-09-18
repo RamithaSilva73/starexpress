@@ -7,10 +7,10 @@ class simstylesMsSql {
     async addstyle(simstyles) {
         const conn = await mssqlcon.getConnection();
         const res = await conn.request()
-        .input("cTransactionType",sql.VarChar(1),simstyles.TransactionType)
-        .input("OracleStyleCode",sql.VarChar(20),simstyles.OracleStyleCode)
-        .input("OracleSimilarCode", sql.VarChar(20),simstyles.OracleSimilarCode)
-        .input("SimilarBody", simstyles.SimilarBody)
+        .input("TransactionType",sql.VarChar(1),simstyles.TransactionType)
+        .input("OracleStyleCode",sql.VarChar(20),simstyles.stylecode)
+        .input("OracleSimilarCode", sql.VarChar(20),simstyles.similarstylecode)
+        .input("SimilarBody", simstyles.BodyNo)
         .execute("addsimstyle");
          return res;
      }
