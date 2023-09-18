@@ -5,7 +5,7 @@ const customError = require('./../../utilities/CustomError')
 const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
 exports.addSewsummary= asyncErrorHandler(async(req, res,next) => {
-   const outVal = await validation.SewsummaryValidation(req,res)  
+   const outVal = await validation.SewsummaryValidationFun(req,res)  
 
    if(outVal.trim()!=='OK') {
      const err = new customError(outVal,406)

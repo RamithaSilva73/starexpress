@@ -1,13 +1,7 @@
 const mssqlcon = require('../../dbconnection');
-
+sql = require('mssql')
 
 class SewsummaryMSSql {
-  
- /*  async getAllSewsummaryfunction() {
-    const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("getAllSewsummary");
-    return res.recordset;
-  } */
   
   async addSewsummary(style) {
     const conn = await mssqlcon.getConnection();

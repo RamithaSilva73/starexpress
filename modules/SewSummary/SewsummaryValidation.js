@@ -2,15 +2,16 @@ const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
-    async SewsummaryValidation(req,res)
+    async SewsummaryValidationFun(req,res)
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
-        .input("TransactionType",req.body.TransactionType)
+        .input("TransactionType",req.body.Transactiontype)
         .input("oraclestylecode",req.body.StyleCode)
         .input("Line",req.body.LineNo)
         .input("LotName",req.body.Lot)
-        .input("FacCD",req.body.FacCD)
+        .input("FacCD",req.body.FacCd)
+        .input("SewDate",req.body.SewDate)
         .output("stylematch",0)
         .execute("SewsummaryValidation")
 
@@ -18,3 +19,4 @@ class CheckStyle
     }
 }
 module.exports = new CheckStyle(); 
+

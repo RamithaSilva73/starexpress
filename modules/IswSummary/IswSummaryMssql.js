@@ -8,7 +8,7 @@ class IswSummaryMssql {
     .input("Transaction", style.TransactionType)
     .input("FacCd", style.FacCd)
     .input("LineNo", style.LineNo)
-    .input("StyleCode", style.StyleCode)
+    .input("OracleStyleCode", style.StyleCode)
     .input("CutNo", style.CutNo)
     .input("CutYear", style.CutYear)
     .input("LOT", style.Lot)
@@ -17,7 +17,7 @@ class IswSummaryMssql {
     .input("Status", style.Status)
     .execute("ADDIswSummary");
     
-   
+    
 
     var affected = {
       'RecordsEffected' :[res.rowsAffected[0]],

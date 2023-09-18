@@ -15,10 +15,10 @@ class DBConnection {
                 trustedConnection: true,
                 enableArithAbort: true,
                 trustServerCertificate: true,
-                encrypt: true
+                encrypt: false
               },
               
-              port:1433
+             port:1433
               
        });
     }
