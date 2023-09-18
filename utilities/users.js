@@ -10,91 +10,108 @@ const jwt=require('jsonwebtoken')
 require('dotenv').config();
 
     router.post('/',(req,res)=>{
-    
-        try {
-
-            addUser(req,res);
-    
-        } catch (error) {
-            //log event in the database & respond 
-            console.log(error);
-        }
-        
+        addUser(req,res);
     })
 
     router.put('/',(req,res)=>{
-    
-        try {
-
-            updateuser(req,res);
-    
-        } catch (error) {
-            //log event in the database and respond
-            console.log(error);
-        }
-        
+        updateUser(req,res);   
     })
 
-    router.get('/',(req,res)=>{
-    
-        try {
-
-            listusers(req,res);
-    
-        } catch (error) {
-            //log event in the database and respond
-            console.log(error);
-        }
-        
+    router.get('/:username',(req,res)=>{        
+        getuser(req,res);
     })
 
-    router.delete('/:username',(req,res)=>{
-    
-        try {
 
-            deleteuser(req,res);
-    
-        } catch (error) {
-            //log event in the database and respond
-            console.log(error);
-        }
-        
-    })
-
-    async function getUserRole(req,res){
-
-        jwt.verify(token,process.env.token_key,(err,user)=>{
-            req.user=user
-        })
-
+    async function getUserRole(username){
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
-        .input("username", req.user)
+        .input("username", username)
         .output("role","")
         .execute("spgetUserRole");
-
         return result.output.role
     }
 
 
     async function addUser(req,res){
+        try{
+            const output = await getUserRole(req,res);
+            if (output=="super"){
 
-        const output = await getUserRole(req,res);
-        if (output=="super"){
+                const conn = await mssqlcon.getConnection();
+                const res = await conn.request()
+                .input("username", req.body.username)
+                .input("password", req.body.password)
+                .input("role", req.body.role)
+                .execute("addUser");
+                return res;
 
-            const conn = await mssqlcon.getConnection();
-            const res = await conn.request()
-            .input("username", req.body.username)
-            .input("password", req.body.password)
-            .input("role", req.body.role)
-            .execute("addUser");
-            return res;
-
+            }
+            else
+            {
+                res.send("Only the super user allowed adding users")
+            }
+        }catch(error){
+            res.send(error)
         }
-        else
-        {
-            res.send("Only the super user allowed adding users")
-        }
+        
     }
+
+
+    async function updateUser(req,res){
+        try{
+            const output = await getUserRole(req,res);
+            if (output=="super"){
+
+                const conn = await mssqlcon.getConnection();
+                const res = await conn.request()
+                .input("username", req.body.username)
+                .input("password", req.body.password)
+                .input("role", req.body.role)
+                .execute("addUser");
+                return res;
+
+            }
+            else
+            {
+                res.send("Only the super user allowed adding users")
+            }
+        }catch(error){
+            res.send(error)
+        }
+        
+    }
+
+
+
+
+    async function getuser(req,res){
+        const user = req.params.username;
+        console.log(user)
+
+        if (!user) {
+            res.status(400).send('email is not passed')
+        }
+
+        try{
+
+        const output = await sqlgetUser(user);
+        res.send(output);
+       }catch(error){
+        res.send(error)
+       }
+        
+    }
+
+
+    async function sqlgetUser(username){
+
+        const conn = await mssqlcon.getConnection();
+        const result = await conn.request()
+        .input("username", username)
+        .execute("spgetUser");
+
+        return result.recordset[0]
+    }
+
 
     module.exports=router
