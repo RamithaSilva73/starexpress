@@ -6,7 +6,7 @@ const router=express.Router();
 class GarmentTypeController{
     constructor(app) {
         router.post('/',GarmentTypes.addGarmentTypes);
-        app.use('/api/v2/Idesk/GarmentType',router);
+        app.use('/api/v1/garmenttype',router);
     }
 
 }

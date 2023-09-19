@@ -8,7 +8,7 @@ class SewsummaryController {
 
         router.post('/', Sewsummary1.addSewsummary);
     
-       app.use('/api/v2/Sewsummary', router);
+       app.use('/api/v1/Sewsummary', router);
         
 
     }
