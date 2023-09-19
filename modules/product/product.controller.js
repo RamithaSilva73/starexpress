@@ -8,7 +8,7 @@ class ProductController {
         router.post('/', product.addProduct);
         router.put('/', product.updateProduct);
         router.delete('/:id', product.deleteProduct);
-        app.use('/api/v1/products', router);
+        app.use('/api/v2/products', router);
     }
 }
 module.exports = ProductController;

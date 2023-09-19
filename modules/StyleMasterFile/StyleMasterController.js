@@ -7,7 +7,7 @@ class StyleFileController{
     constructor(app) {
         router.post('/',AddStyleFile.addNewStyle);
         router.get('/history',AddStyleFile.getHistoryStyles);
-        app.use('/api/v1/idesk/style',router);
+        app.use('/api/v2/idesk/style',router);
     }
 }
 
