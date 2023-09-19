@@ -42,7 +42,9 @@ require('dotenv').config();
                 .input("password", req.body.password)
                 .input("role", req.body.role)
                 .execute("addUser");
-                return res;
+                
+                res.send(res)
+              
 
             }
             else
@@ -63,7 +65,7 @@ require('dotenv').config();
             .input("username", req.body.username)
             .input("password", req.body.password)
             .execute("spUpdateUser");
-            return res;
+           res.send(res);
         }catch(error){
             res.send(error)
         }
