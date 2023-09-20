@@ -4,10 +4,8 @@ const router = express.Router();
 
 class IswSummaryController {
     constructor(app) {
-       
         router.post('/',IswSummary.addIswSummary);
-        app.use('/api/v1/IswSummary', router);
-
+        app.use('/api/v1/iswsummary', router);
     }
 }
 module.exports = IswSummaryController;
