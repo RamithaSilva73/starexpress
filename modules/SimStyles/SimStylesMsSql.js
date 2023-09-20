@@ -12,7 +12,11 @@ class simstylesMsSql {
         .input("OracleSimilarCode", sql.VarChar(20),simstyles.similarstylecode)
         .input("SimilarBody", simstyles.BodyNo)
         .execute("addsimstyle");
-         return res;
+        // return res;
+        var affected = {
+            'RecordsEffected':[res.rowsAffected[0]]
+        };
+        return affected;
      }
 }
 module.exports = new simstylesMsSql(); 
