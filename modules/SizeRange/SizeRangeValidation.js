@@ -2,19 +2,14 @@ const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
-    async IswSummaryValidation(req,res)
+    async SizeRangeValidation(req,res)
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
-        .input("OracleStyleCode",req.body.StyleCode)
-        .input("Line",req.body.LineNo)
-        .input("LotName",req.body.Lot)
-        .input("FacCd",req.body.FactoryCd)
-        .input("IswDate", req.body.IssueDate)
+        .input("oraclestylecode",req.body.StyleCode)
         .output("stylematch",0)
-        .execute("IswSummaryValidation")
-
+        .execute("SizeRangeValidation")
         return result.output.stylematch
     }
 }
