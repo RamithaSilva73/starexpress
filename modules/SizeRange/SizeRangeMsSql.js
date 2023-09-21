@@ -3,20 +3,25 @@
 const mssqlcon = require('../../dbconnection');
 sql = require('mssql')
 
-class simstylesMsSql {
-    async addstyle(simstyles) {
-        const conn = await mssqlcon.getConnection();
-        const res = await conn.request()
-        .input("TransactionType",sql.VarChar(1),simstyles.TransactionType)
-        .input("OracleStyleCode",sql.VarChar(20),simstyles.stylecode)
-        .input("OracleSimilarCode", sql.VarChar(20),simstyles.similarstylecode)
-        .input("SimilarBody", simstyles.BodyNo)
-        .execute("addsimstyle");
-        // return res;
+class sizeRangeMsSql {
+    async addsize(sizerange) {
+        const p = sizerange.Size.length
+        let nRec=0
+        for(let i=0;i<sizerange.Size.length;i++)
+        {
+            const conn = await mssqlcon.getConnection();
+            const res = await conn.request()
+            .input("TransactionType",sql.VarChar(1),sizerange.TransactionType)
+            .input("OracleStyleCode",sql.VarChar(20),sizerange.StyleCode)
+            .input("Size", sizerange.Size[i])
+            .execute("addsizerange")
+            nRec=nRec+res.rowsAffected[0]
+        }
+
         var affected = {
-            'RecordsEffected':[res.rowsAffected[0]]
+            'RecordsEffected':[nRec]
         };
-        return affected;
+        return affected; 
      }
 }
-module.exports = new simstylesMsSql(); 
+module.exports = new sizeRangeMsSql(); 

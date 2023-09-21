@@ -1,12 +1,12 @@
-const simstyles = require('./SizeRange');
+const sizerange = require('./SizeRange');
 const express = require('express');
 const router = express.Router();
 
 class simstylescontroller {
     constructor(app) 
     {
-        router.post('/', simstyles.addstyle);
-        app.use('/api/v2/similarstyle', router);
+        router.post('/', sizerange.addsize);
+        app.use('/api/v2/sizerange', router);
     }
 }
 module.exports = simstylescontroller;
