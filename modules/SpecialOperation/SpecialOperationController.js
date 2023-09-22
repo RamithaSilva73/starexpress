@@ -7,7 +7,7 @@ class SpecialOparationController {
     constructor(app){
         //console.log("hello");
         router.post('/',SpecialOperation.addSpecialOperation);
-        app.use('/api/v1/Idesk/specialoperation',router);
+        app.use('/api/v1/specialoperation',router);
     }
 }
 
