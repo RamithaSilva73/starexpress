@@ -11,7 +11,7 @@ async AddGarmentTypes(GarmentType)
     const conn = await mssqlcon.getConnection();
     
     const res=await conn.request()
-    .input("cTransactionType",sql.VarChar(1),GarmentType.Transactiontype)
+    .input("cTransactionType",sql.VarChar(1),GarmentType.TransactionType)
     .input("cGarmentGroup",sql.VarChar(15),GarmentType.GarmentGroup )
     .input("cGarmentCode",sql.VarChar(5),GarmentType.GarmentCode)
     .input("cGarmentType",sql.VarChar(20),GarmentType.GarmentType )

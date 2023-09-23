@@ -6,7 +6,7 @@ const router=express.Router();
 class StyleFileController{
     constructor(app) {
         router.post('/',AddStyleFile.addNewStyle);
-        app.use('/api/v1/idesk/style',router);
+        app.use('/api/v1/style',router);
     }
 
 }
