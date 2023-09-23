@@ -12,7 +12,7 @@ class SewsummaryMSSql {
   async addSewsummary(style) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("TransactionType",sql.VarChar(1), style.Transactiontype)
+    .input("TransactionType",sql.VarChar(1), style.TransactionType)
     .input("FacCd", sql.VarChar(3) ,style.FacCd)
     .input("LineNo",sql.VarChar(3), style.LineNo)
     .input("OracleStyleCode", style.StyleCode)

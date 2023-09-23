@@ -6,7 +6,7 @@ class CheckStyle
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
-        .input("TransactionType",req.body.Transactiontype)
+        .input("TransactionType",req.body.TransactionType)
         .input("oraclestylecode",req.body.StyleCode)
         .input("Line",req.body.LineNo)
         .input("LotName",req.body.Lot)
