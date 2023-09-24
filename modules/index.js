@@ -31,6 +31,10 @@ class Module {
     const threadconsumptioncontroller = require('./threadconsumption/threadconsumption.controller');
     new threadconsumptioncontroller(this.app);
 
+    const smvcontroller = require('./smv/smv.controller');
+    new smvcontroller(this.app);
+
+  
     const similarstylecontroller = require('./SimStyles/SimStylesController');
     new similarstylecontroller(this.app);
 
