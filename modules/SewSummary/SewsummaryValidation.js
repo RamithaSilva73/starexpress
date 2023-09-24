@@ -10,6 +10,8 @@ class CheckStyle
         .input("oraclestylecode",req.body.StyleCode)
         .input("Line",req.body.LineNo)
         .input("LotName",req.body.Lot)
+        .input("FacCD",req.body.FacCD)
+        .input("SewDate",req.body.SewDate)
         .output("stylematch",0)
         .execute("SewsummaryValidation")
 
