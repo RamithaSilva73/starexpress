@@ -10,7 +10,9 @@ class IswSummaryMssql {
     .input("FacCd", sql.VarChar(3),style.FactoryCd)
     .input("LOT", sql.VarChar(7),style.Lot)
     .input("LineNo", sql.VarChar(3),style.LineNo)
+
     .input("TrackingNumber", sql.VarChar(50),style.TrackingNumber)
+
     .input("CutNo", sql.VarChar(5),style.CutNo)
     .input("CutYear", sql.VarChar(4),style.CutYear)
     .input("Qty", style.Qty)
