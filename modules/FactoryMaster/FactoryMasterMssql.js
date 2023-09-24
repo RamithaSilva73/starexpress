@@ -11,7 +11,7 @@ async AddFactory(Factory)
         const conn=await mssqlcon.getConnection();
   
         const res= await conn.request()
-        .input("cTransactionType",sql.VarChar(1),Factory.Transactiontype)
+        .input("cTransactionType",sql.VarChar(1),Factory.TransactionType)
         .input("cFtyCode",sql.VarChar(3),Factory.FtyCode)
         .input("cFactoryName",sql.VarChar(60),Factory.FactoryName)
         .input("bModular",Factory.Modular)

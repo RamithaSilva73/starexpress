@@ -10,7 +10,9 @@ class sqlError
         .input("cAccountNumber",req.body.AccountNumber)
         .input("cStyleType",req.body.StyleType)
         .input("cGarmentCode",req.body.GarmentCode)
-        .input("OracleStyleCode",req.body.StyleCode)
+        .input("cTrackingNumber",req.body.TrackingNumber)
+        .input("cShipFty",req.body.ShipFty)
+        .input("cWashNonWash",req.body.WashNonWash)
         .output("ValidReturnVal",0)
         .execute("StyleMasterValidation")
 
