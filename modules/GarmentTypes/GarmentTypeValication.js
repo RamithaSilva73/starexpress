@@ -6,7 +6,7 @@ class sqlError
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
-        .input("TransactionType",req.body.Transactiontype)
+        .input("TransactionType",req.body.TransactionType)
         .output("ValidReturnVal",0)
         .execute("GarmentTypeValidation")
 
