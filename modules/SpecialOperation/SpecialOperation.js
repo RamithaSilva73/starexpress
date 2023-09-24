@@ -4,7 +4,7 @@ const validation = require('./SpecialOperationValidation')
 const customError = require('./../../utilities/CustomError')
 const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
-exports.addSpecialOperation= asyncErrorHandler(async(req, res,next) => {
+exports.AddSpecialOperation= asyncErrorHandler(async(req, res,next) => {
     const outVal = await validation.SpecialOparationValidation(req,res)      
   
   
