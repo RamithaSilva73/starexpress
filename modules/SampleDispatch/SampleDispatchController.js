@@ -8,7 +8,7 @@ class SampleDispatchController {
 
         router.post('/', SampleDispatch.addSampleDispatchFunction);
     
-       app.use('/api/v1/SampleDispatch', router);
+       app.use('/api/v2/sampledispatch', router);
         
 
     }

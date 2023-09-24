@@ -36,8 +36,15 @@ class Module {
     const threadconsumptioncontroller = require('./threadconsumption/threadconsumption.controller');
     new threadconsumptioncontroller(this.app);
 
+    const smvcontroller = require('./smv/smv.controller');
+    new smvcontroller(this.app);
+
+  
     const similarstylecontroller = require('./SimStyles/SimStylesController');
     new similarstylecontroller(this.app);
+
+    const AssetGrnController=require('./AssetGRN/AssetGrn.controller');
+    new AssetGrnController(this.app);
 
     const RefSampleTypeController =require('./RefSampleType/RefSampleController');
     new RefSampleTypeController(this.app);
@@ -74,6 +81,7 @@ class Module {
 
 
    }  
+
 
 
 }

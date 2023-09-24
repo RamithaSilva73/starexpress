@@ -1,73 +1,53 @@
 const trimconsumptionMSSql = require('./trimconsumption.mssql');
-console.log('4')
+const validation = require('./trimconsumptionValidation')
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
-class trimconsumption {
-    async getAlltrimconsumption(req, res) {
-      try {
-         const output = await trimconsumptionMSSql.getAlltrimconsumption();
-         res.send(output);
-         
-      }
-      catch (error) {
-      res.status(500).json(error)
+exports.getAlltrimconsumption= asyncErrorHandler(async(req, res,next) => {
 
- 
-    }
- }
+  const outVal = await validation.trimconsumptionValidationcomp(req,res)      
 
- async getPendtrimconsumption(req, res) {
-  try {
-     const output = await trimconsumptionMSSql.getPendtrimconsumption();
-     res.send(output);
-     
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
   }
-  catch (error) {
-  res.status(500).json(error)
 
+  const output = await trimconsumptionMSSql.getAlltrimconsumption(req.body);
+  res.status(200).send(output);
 
-}
-}
+})
 
+exports.getPendtrimconsumption= asyncErrorHandler(async(req, res,next) => {
 
+  const outVal = await validation.trimconsumptionValidationpend(req,res)      
 
-
-  async addtrimconsumption(req, res) {
-   try {
-     const output = await trimconsumptionMSSql.addtrimconsumption(req.body);
-     res.status(200).send(output);
-   }
-   catch (error) {
-    res.status(500).json(error);
-   }
- }
-
- 
-/* async updatestyle(req, res) {
-   try {
-     const output = await stylemasterMssql.updatestyle(req.body);
-     res.status(200).send(output);
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
   }
-  catch (error) {
- 
-  res.status(500).json(error)
- }
- }
- async deletestyle(req, res) {
-    const id = req.params.id;
-    try {
-     if (!id) {
-      res.status(400).send('id is not passed')
-      //console.log('id is not passed');
-     }
-     const output = await stylemasterMssql.deletestyle(id);
-     res.status(200).send(output);
-    }
-    catch (error) {
-      res.status(500).json(error)
-    }
-  } */
+
+
+  const output = await trimconsumptionMSSql.getPendtrimconsumption(req.body);
+  res.status(200).send(output);
+
+})
+
+exports.addtrimconsumption = asyncErrorHandler(async(req, res,next) => {
+
+  const outVal = await validation.trimconsumptionValidation(req,res)    
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
+  }
+
+
+  const output = await trimconsumptionMSSql.addtrimconsumption(req.body);
+  res.status(200).send(output);
+
+})
 
 
 
-}
-module.exports = new trimconsumption();
+
+
+
