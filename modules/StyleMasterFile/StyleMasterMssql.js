@@ -5,15 +5,15 @@ class StyleMasterMssql{
 
 async addNewStyle(NewStyle)
 {
-
-   
     const conn = await mssqlcon.getConnection();
     const res=await conn.request()
+
    
     .input("cTransactionType",sql.VarChar(1),NewStyle.TransactionType)
     .input("cTrackingNumber",sql.VarChar(50),NewStyle.TrackingNumber)
     .input("cStyleName",sql.VarChar(25),NewStyle.StyleName)
     .input("cStyleNumber",sql.VarChar(50),NewStyle.StyleNumber)
+
     .input("cAccountNumber",sql.VarChar(5),NewStyle.AccountNumber)  
     .input("nSeasonYear",NewStyle.SeasonYear) 
     .input("cProductionStage",sql.VarChar(3),NewStyle.ProductionStage)
@@ -45,13 +45,20 @@ async addNewStyle(NewStyle)
     .input("dEnterDate",sql.DateTime,NewStyle.EnterDate)
     .input("dEditDate",NewStyle.EditDate) 
     .execute("AddStyleMaster");
-   // console.log ('tt')
-   // return res;
+
    var affected={'RecordsEffected':[res.rowsAffected[0]]}
    return affected;    
 
 }
+
+async getHistoryStyles(){
+    const conn = await mssqlcon.getConnection();
+    const res = await conn.request().execute("getStyleMasterHistory");
+    return res.recordset;
 }
+
+}
+
 
 module.exports=new StyleMasterMssql();
 

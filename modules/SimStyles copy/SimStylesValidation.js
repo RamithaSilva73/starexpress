@@ -1,4 +1,4 @@
-const mssqlcon = require("./../../dbconnection")
+const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
@@ -7,10 +7,10 @@ class CheckStyle
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
-        .input("oraclestylecode",req.body.StyleCode)
-        .input("OracleSimilarCode",req.body.SimilarStyleCode)
+        .input("oraclestylecode",req.body.stylecode)
+        .input("OracleSimilarCode",req.body.similarstylecode)
         .output("stylematch",0)
-        .execute("SimStylesValidation")
+        .execute("simStylesValidation")
         return result.output.stylematch
     }
 }

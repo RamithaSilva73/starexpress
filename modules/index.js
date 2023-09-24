@@ -1,3 +1,5 @@
+//const IswSummaryController = require('./IswSummary/IswSummaryController');
+
 class Module {
     constructor(app) 
     {
@@ -23,6 +25,11 @@ class Module {
    const StyleMasterFileController=require('./StyleMasterFile/StyleMasterController');
    new StyleMasterFileController(this.app);
    
+
+   const StyleMasterFileControllerOld=require('./StyleMaster/StyleMaster.Controller');
+   new StyleMasterFileControllerOld(this.app);
+   
+
     const trimconsumptioncontroller = require('./trimconsumption/trimconsumption.controller');
     new trimconsumptioncontroller(this.app);
 
@@ -35,8 +42,43 @@ class Module {
     const AssetGrnController=require('./AssetGRN/AssetGrn.controller');
     new AssetGrnController(this.app);
 
-   }
-  }
+    const RefSampleTypeController =require('./RefSampleType/RefSampleController');
+    new RefSampleTypeController(this.app);
 
+    const IswSummaryController =require('./IswSummary/IswSummaryController');
+    new IswSummaryController(this.app);
+
+
+    const LotMasterDataController=require('./LotMasterData/LotMasterDataController');
+    new LotMasterDataController(this.app);
+
+    const SewWithoutController = require('./SewWithout/SewWithoutController');
+    new SewWithoutController(this.app);
+
+    const SammpleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
+    new SammpleSubmissionController(this.app);
+    
+    const SampleDispatchController =require('./SampleDispatch/SampleDispatchController');
+    new SampleDispatchController(this.app)
+
+    const SewsummaryController=require('./SewSummary/Sewsummary.controller');
+    new SewsummaryController(this.app)
+  
+    const SampleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
+    new SampleSubmissionController(this.app);
+
+    const SizeRangeController =require('./SizeRange/SizeRangeController');
+    new SizeRangeController(this.app);
+
+
+    
+
+
+   }  
+
+
+
+}
+  
   module.exports = Module
  
