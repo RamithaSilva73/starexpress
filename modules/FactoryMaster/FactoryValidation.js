@@ -9,7 +9,7 @@ class sqlError
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
-        .input("TransactionType",req.body.Transactiontype)
+        .input("TransactionType",req.body.TransactionType)
         .input("bModular",sql.Int,req.body.Modular)
         .output("ValidReturnVal",0)
         .execute("FactoryValidation")

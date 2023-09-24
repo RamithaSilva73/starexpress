@@ -10,7 +10,6 @@ class SpecialOparationController {
 
         app.use('/api/v1/specialoperation',router);
 
-       
     }
 }
 

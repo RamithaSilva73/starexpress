@@ -2,14 +2,15 @@ const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
-    async SizeRangeValidation(req,res)
+    async PreProdValidation(req,res)
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
         .input("TrackingNumber",req.body.TrackingNumber)
+        .input("FtyCode",sql.VarChar(3),req.body.FtyCode)
         .output("stylematch",0)
-        .execute("SizeRangeValidation")
+        .execute("PreProdValidation")
         return result.output.stylematch
     }
 }

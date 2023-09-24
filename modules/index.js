@@ -74,6 +74,8 @@ class Module {
     const SizeRangeController =require('./SizeRange/SizeRangeController');
     new SizeRangeController(this.app);
 
+    const PreProdutionController =require('./PreProduction/PreProductionController');
+    new PreProdutionController(this.app);
 
     
 
