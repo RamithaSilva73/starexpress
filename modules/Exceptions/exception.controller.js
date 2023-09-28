@@ -5,6 +5,8 @@ const router = express.Router();
 class exceptionController {
     constructor(app) {
         router.get('/', exception.getoracleexception);
+        router.get('/star', exception.getstarexception);
+
         router.post('/star', exception.poststarexception);
         router.post('/oracle', exception.postoracleexception);
 

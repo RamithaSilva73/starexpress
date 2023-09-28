@@ -6,7 +6,7 @@ class SewWithoutController {
     constructor(app) {
        
         router.post('/', SewWithout.addSewWithout);
-        app.use('/api/v2/sewwithout', router);
+        app.use('/api/v1/sewwithout', router);
 
     }
 }

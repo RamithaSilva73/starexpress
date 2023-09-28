@@ -1,24 +1,49 @@
 const mssqlcon = require('../../dbconnection');
-class stylemasterMSSql {
+class exceptionMSSql {
   
-  async getAllstyles() {
+  async getoracleexception() {
     const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("getAllstyles");
+    const res = await conn.request().execute("getApierrorlog");
     return res.recordset;
   }
   
-  async addstyle(style) {
+
+  async getstarexception() {
+    const conn = await mssqlcon.getConnection();
+    const res = await conn.request().execute("getApistarerrorlog");
+    return res.recordset;
+  }
+  
+
+  async poststarexception(exception) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("style_number", style.stylenumber)
-    .input("style_name", style.stylename)
-    .input("orderqty", style.orderqty)
-    .input("account", style.account)
-    .input("merchant", style.merchant)
-    .input("product", style.producttype)
-    .execute("addstyle");
+    .input("cService", exception.Service)
+    .input("cError", exception.Error)
+    .input("cSeverity", exception.Severity)
+    .input("cAction", exception.Action)
+    .input("cDescription", exception.Description)
+    .input("cUser", exception.User)
+    .execute("addstarerrorlog");
     return res;
  }
+
+
+ async postoracleexception(exception) {
+  const conn = await mssqlcon.getConnection();
+  const result =  await conn.request()
+  .input("Method",exception.method)
+  .input("ApiEndPoint",exception.fullurl)
+  .input("JsnBody",exception.jsnbody)
+  .input("Status",exception.statuscode)
+  .input("Message",exception.msg)
+  .input("StackTrace",exception.stack)
+  .input("Json",exception.jsnfile)
+  .execute("addError") 
+  return result;
+}
+
+
 
  async updatestyle(style) {
    const conn = await mssqlcon.getConnection();
@@ -42,4 +67,4 @@ class stylemasterMSSql {
    return res;
  }
 }
-module.exports = new stylemasterMSSql();
+module.exports = new exceptionMSSql();

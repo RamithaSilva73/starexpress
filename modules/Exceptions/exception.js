@@ -1,10 +1,11 @@
-const stylemasterMssql = require('./stylemaster.mssql');
+const exceptionMssql = require('./exception.mssql');
 
 
-class stylemaster {
-    async getAllstyles(req, res) {
+class exception {
+  
+  async getoracleexception(req, res) {
       try {
-         const output = await stylemasterMssql.getAllstyles();
+         const output = await exceptionMssql.getoracleexception();
          res.send(output);
          
       }
@@ -15,9 +16,9 @@ class stylemaster {
     }
  }
 
- async addstyle(req, res) {
+ async getstarexception(req, res) {
    try {
-     const output = await stylemasterMssql.addstyle(req.body);
+     const output = await exceptionMssql.getstarexception(req.body);
      res.status(200).send(output);
    }
    catch (error) {
@@ -26,9 +27,9 @@ class stylemaster {
  }
 
  
- async updatestyle(req, res) {
+ async poststarexception(req, res) {
    try {
-     const output = await stylemasterMssql.updatestyle(req.body);
+     const output = await exceptionMssql.poststarexception(req.body);
      res.status(200).send(output);
   }
   catch (error) {
@@ -36,22 +37,42 @@ class stylemaster {
   res.status(500).json(error)
  }
  }
- async deletestyle(req, res) {
-    const id = req.params.id;
-    try {
-     if (!id) {
-      res.status(400).send('id is not passed')
-      //console.log('id is not passed');
-     }
-     const output = await stylemasterMssql.deletestyle(id);
-     res.status(200).send(output);
-    }
-    catch (error) {
-      res.status(500).json(error)
-    }
-  }
+ 
 
+ async postoracleexception(req, res) {
+  try {
+    const output = await exceptionMssql.postoracleexception(req.body);
+    res.status(200).send(output);
+ }
+ catch (error) {
+ //console.log(error);
+ res.status(500).json(error)
+}
+}
+
+async updateoracleexception(req, res) {
+  try {
+    const output = await exceptionMssql.updateoracleexception(req.body);
+    res.status(200).send(output);
+ }
+ catch (error) {
+ //console.log(error);
+ res.status(500).json(error)
+}
+}
+
+
+async updatstarexception(req, res) {
+ try {
+   const output = await exceptionMssql.updatstarexception(req.body);
+   res.status(200).send(output);
+}
+catch (error) {
+//console.log(error);
+res.status(500).json(error)
+}
+}
 
 
 }
-module.exports = new stylemaster();
+module.exports = new exception();

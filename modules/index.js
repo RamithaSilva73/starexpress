@@ -77,9 +77,9 @@ class Module {
     const PreProdutionController =require('./PreProduction/PreProductionController');
     new PreProdutionController(this.app);
 
+    const ExceptionController =require('./Exceptions/exception.controller');
+    new ExceptionController(this.app);
     
-
-
    }  
 
 
