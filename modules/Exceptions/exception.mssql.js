@@ -72,7 +72,7 @@ class exceptionMSSql {
   .input("Json",exception.jsnfile)
   .input("Action",exception.Action)
   .input("Clear",exception.Clear)
-  .execute("addError") 
+  .execute("updateoracleerrorlog") 
   return result;
 }
 
