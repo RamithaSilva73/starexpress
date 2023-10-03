@@ -8,13 +8,13 @@ class trimconsumption
         const p = req.body.lines.length;
         for(let i = 0; i < p; i++){
             const result = await conn.request()
-            .input("cStyleNumber", req.body.request.StyleNumber)
-            .input("cStyleCode", req.body.request.StyleCode)
+            .input("cTrackingNumber", req.body.request.TrackingNumber)
             .input("cSeason", req.body.request.Season)
             .input("cTrimType", req.body.request.TrimConsumptionType)
             .input("cGarmntType", req.body.request.GarmentType)
             .input("cSampletype", req.body.request.SampleType)
             .input("cBrand", req.body.request.Brand)
+            .input("cStyleName", req.body.request.StyleNumber)
             .input("cItemType", req.body.lines[i].ItemType)
             .input("cPlacement", req.body.lines[i].Placement)
             .input("cSize", req.body.lines[i].Size)
