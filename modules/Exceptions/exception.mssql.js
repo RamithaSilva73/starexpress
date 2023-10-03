@@ -25,7 +25,12 @@ class exceptionMSSql {
     .input("cDescription", exception.Description)
     .input("cUser", exception.User)
     .execute("addstarerrorlog");
-    return res;
+
+    var affected = {
+      'RecordsEffected' :[res.rowsAffected[0]],
+    };
+  
+    return affected;
  }
 
 
@@ -40,7 +45,14 @@ class exceptionMSSql {
   .input("StackTrace",exception.stack)
   .input("Json",exception.jsnfile)
   .execute("addError") 
-  return result;
+
+
+  var affected = {
+    'RecordsEffected' :[result.rowsAffected[0]],
+  };
+
+  return affected;
+
 }
 
 
@@ -56,7 +68,13 @@ class exceptionMSSql {
   .input("cUser", exception.User)
   .input("Clear", exception.Clear)
   .execute("updatestarerrorlog");
-  return res;
+
+  var affected = {
+    'RecordsEffected' :[res.rowsAffected[0]],
+  };
+
+  return affected;
+
  }
 
 
@@ -73,7 +91,12 @@ class exceptionMSSql {
   .input("Action",exception.Action)
   .input("Clear",exception.Clear)
   .execute("updateoracleerrorlog") 
-  return result;
+
+  var affected = {
+    'RecordsEffected' :[result.rowsAffected[0]],
+  };
+
+  return affected;
 }
 
 
