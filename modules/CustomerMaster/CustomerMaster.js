@@ -1,6 +1,5 @@
 const NewCoustomer=require('./CustomerMaster.mssql');
 
-
 const validation = require('./CustomerValidation')
 const customError = require('./../../utilities/CustomError')
 const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
@@ -16,4 +15,12 @@ exports.addNewCustomer= asyncErrorHandler(async(req, res,next) => {
 
   const output = await NewCoustomer.AddNewCustomer(req.body);
   res.status(200).send(output);
+})
+
+
+exports.gethistorycustomers=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await NewCoustomer.gethistorycustomers(req.body);
+  res.status(200).send(output);
+
 })

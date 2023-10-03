@@ -20,8 +20,22 @@ class LotMasterDataMssql {
       'RecordsEffected':[res.rowsAffected[0]],
   };
 
-return affected;
+    return affected;
   }
 
+  async gethistorylotmaster (){
+    const conn=await mssqlcon.getConnection();
+    const res=await conn.request().execute("getlotmasterHistory");
+    return res.recordset;
+  
+  }
+  
+  gethistorylotmaster
+
 }
+
+
+
+
+
 module.exports = new LotMasterDataMssql();
