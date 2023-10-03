@@ -8,7 +8,7 @@ class smvMSSql {
     console.log(para)
     const res1 = await conn.request()
     .input("cTyp",para)
-    .execute("GetAllHdgethreadconsumption");
+    .execute("GetAllHDsmvrequest");
     const scount = res1.recordsets[0].length
     var data = []
     console.log(scount)
@@ -18,51 +18,34 @@ class smvMSSql {
          console.log(dtl)
         const res2 = await conn.request()
         .input("nTrackNo",dtl)
-        .execute("GetAllDTgetthreadconsumption");
+        .execute("GetAllDTsmvbulletin");
         res1.lines = res2
         data.push({
-          'request':res1.recordset[i],
+          'Header':res1.recordset[i],
           'lines': res1.lines.recordset
 
         }) 
       }
-    const res3 = await conn.request().execute("DelAllgetthrdconsumption");
+    const res3 = await conn.request().execute("DelAllgetSmvRequest");
     return data;
   }
 
+  
   async getPendsmvrequest() {
     const conn = await mssqlcon.getConnection();    
     var para = 'PEN'
     console.log(para)
     const res1 = await conn.request()
     .input("cTyp",para)
-    .execute("GetAllHdgethreadconsumption");
-     const scount = res1.recordsets[0].length
-    var data = []
-    console.log(scount)
-    for (let i = 0; i < scount; i++){
-      console.log(i)
-/*          var dtl = res1.recordsets[0][i].TrackingNumber
-         console.log(dtl)
-        const res2 = await conn.request()
-        .input("nTrackNo",dtl)
-        .execute("GetAllDTgetthreadconsumption"); */
-        res1.lines = res2 
-        data.push({
-          'request':res1.recordset[i],
-         // 'lines': res1.lines.recordset
-
-        }) 
-      }
-    return data;
+    .execute("GetAllHDsmvrequest");
+    return res1.recordset;
   }
-
 
    async addsmvrequest(smv) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("nTrackingNumber",sql.VarChar(25), smv.TrackingNumber)
-    .input("nPOCNumber",sql.VarChar(25), smv.POCNumber)
+    .input("cTrackingNumber",sql.VarChar(50), smv.TrackingNumber)
+    .input("cPOCNumber",sql.VarChar(25), smv.POCNumber)
     .input("cSampleDocumentNo",sql.VarChar(25), smv.SampleDocumentNo)
     .input("cGarmentType",sql.VarChar(20), smv.GarmentType)
     .input("cCustomer",sql.VarChar(20), smv.Customer)
@@ -86,11 +69,13 @@ class smvMSSql {
     .input("cLayingType",sql.VarChar(7), smv.LayingType) 
     .input("cSharePointURLLink",sql.VarChar(100), smv.SharePointURLLink) 
     .execute("addsmvrequest");
-/*      const res2 = await conn.request()
-     .input("nTrackingNumber", smv.Request.TrackingNumber)
-     
-     .execute("Addthrdjob"); */ 
-    return res;  
+      const res2 = await conn.request()
+     .input("cTrackingNumber", smv.TrackingNumber)     
+     .execute("Addsmvjob");   
+     var affected = {
+        'Records Effected' :[res.rowsAffected[0]]
+      }; 
+    return affected;  
  }
 
 }

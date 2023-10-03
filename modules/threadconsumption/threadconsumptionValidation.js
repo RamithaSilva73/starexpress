@@ -6,11 +6,11 @@ class threadconsumption
     {
         const p = req.body.Lines.length;
         const conn = await mssqlcon.getConnection();
-        const result = await conn.request()
-        .input("cStyleNumber", req.body.Request.StyleNumber)
-        .input("cStyleCode", req.body.Request.StyleCode)
-        .input("cSeason", req.body.Request.Season)
-        .input("cBrand", req.body.Request.Brand)
+        const result = await conn.request()  
+        .input("cTrackingNumber",sql.VarChar(50), req.body.Request.TrackingNumber) 
+        .input("cSeason",sql.VarChar(20), req.body.Request.Season)
+        .input("cBrand",sql.VarChar(40), req.body.Request.Brand)
+        .input("cStyleName",sql.VarChar(25), req.body.Request.StyleNumber)
         .output("threadmatch",0)
         .execute("thrdconsmptionValidation")
         var ret1 = result.output.threadmatch
