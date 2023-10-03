@@ -9,7 +9,7 @@ const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
 exports.addNewStyle= asyncErrorHandler(async(req, res,next) => {
   const outVal = await validation.StyleMasterValidation(req,res)      
-
+  //const outVal='OK'
   if(outVal.trim()!=='OK') {
     const err = new customError(outVal,406)
     return next(err) 

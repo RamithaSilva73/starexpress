@@ -46,8 +46,12 @@ class Module {
     const AssetGrnController=require('./AssetGRN/AssetGrn.controller');
     new AssetGrnController(this.app);
 
+
     const RefSampleTypeController =require('./RefSampleType/RefSampleController');
     new RefSampleTypeController(this.app);
+
+    const AssetInvController=require('./AssetInventory/AssetInventory.controller');
+    new AssetInvController(this.app);
 
     const IswSummaryController =require('./IswSummary/IswSummaryController');
     new IswSummaryController(this.app);
@@ -84,7 +88,7 @@ class Module {
 
 
 
-}
-  
+   }
+  }
   module.exports = Module
  
