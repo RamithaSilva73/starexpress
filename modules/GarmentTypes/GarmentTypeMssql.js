@@ -25,7 +25,21 @@ async AddGarmentTypes(GarmentType)
     return affected;    
 
     }
+
+
+    async gethistorygarmenttype (){
+        const conn=await mssqlcon.getConnection();
+        const res=await conn.request().execute("getgarmenttypeHistory");
+        return res.recordset;
+
+    }
+
+
+
 }
+
+
+
 
 module.exports=new GarmentTypesMssql();
 

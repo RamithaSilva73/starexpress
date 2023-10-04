@@ -12,7 +12,7 @@ class sizeRangeMsSql {
             const conn = await mssqlcon.getConnection();
             const res = await conn.request()
             .input("TransactionType",sql.VarChar(1),sizerange.TransactionType)
-            .input("OracleStyleCode",sql.VarChar(20),sizerange.StyleCode)
+            .input("TrackingNumber",sql.VarChar(50),sizerange.TrackingNumber)
             .input("Size", sizerange.Size[i])
             .execute("addsizerange")
             nRec=nRec+res.rowsAffected[0]
