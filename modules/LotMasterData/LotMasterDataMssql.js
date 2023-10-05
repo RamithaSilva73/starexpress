@@ -24,13 +24,14 @@ class LotMasterDataMssql {
   }
 
   async gethistorylotmaster (){
+        
     const conn=await mssqlcon.getConnection();
     const res=await conn.request().execute("getlotmasterHistory");
     return res.recordset;
   
   }
   
-  gethistorylotmaster
+ 
 
 }
 
