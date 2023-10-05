@@ -1,12 +1,12 @@
-const simstyles = require('./SimStyles');
+const ITAsset = require('./ITAsset');
 const express = require('express');
 const router = express.Router();
 
-class simstylescontroller {
+class ITAssetcontroller {
     constructor(app) 
     {
-        router.post('/', simstyles.addstyle);
+        router.get('/', ITAsset.getITAsset);
         app.use('/api/v1/similarstyle', router);
     }
 }
-module.exports = simstylescontroller;
+module.exports = ITAssetcontroller;
