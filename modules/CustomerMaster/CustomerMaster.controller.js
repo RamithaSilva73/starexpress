@@ -9,6 +9,7 @@ class CustomerMasterController
     {
         //console.log("hello");
         router.post('/',CustomerOperation.addNewCustomer);
+        router.get('/history',CustomerOperation.gethistorycustomers);
         app.use('/api/v1/Customer',router);
     }
 }

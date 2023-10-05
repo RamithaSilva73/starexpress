@@ -17,10 +17,11 @@ class FactoryMasterMssql{
         return affected;            
     }
 
-    async getAllFactores (){
+    async gethistoryfactory (){
         const conn=await mssqlcon.getConnection();
-        const res=await conn.request().exceute("getAllFactores");
+        const res=await conn.request().execute("getFactoryHistory");
         return res.recordset;
+
     }
 }
 
