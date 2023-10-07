@@ -5,17 +5,17 @@ class SewWithoutrMSSql {
   async addSewWithout(style) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("Transaction", style.TransactionType)
-    .input("Date", style.Date)
-    .input("Fty", style.FactoryCd)
-    .input("Line", style.Line)
-    .input("Cut", style.Cut)
-    .input("CutYear", style.Year)
-    .input("Lot", style.Lot)
-    .input("StyleCode", style.StyleCode)
-    .input("AttachQty", style.AttachedQty)
-    .input("WithoutQty", style.WithoutQty)
-    .execute("addSewWithoutNew");
+    .input("Transaction",sql.VarChar(1),style.TransactionType)
+    .input("TrackingNumber",sql.VarChar(50),style.TrackingNumber)
+    .input("Date",style.Date)
+    .input("Fty",sql.VarChar(3),style.FactoryCd)
+    .input("Line",sql.VarChar(3),style.Line)
+    .input("Cut",sql.VarChar(5),style.Cut)
+    .input("CutYear",sql.VarChar(4),style.Year)
+    .input("Lot",sql.VarChar(7),style.Lot)
+    .input("AttachQty",style.AttachedQty)
+    .input("WithoutQty",style.WithoutQty)
+    .execute("addSewWithout");
     
     
     var affected = {

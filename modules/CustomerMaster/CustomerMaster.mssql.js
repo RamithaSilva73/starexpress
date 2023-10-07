@@ -26,9 +26,15 @@ class CustomerMasterMssql
         var affected={'RecordsEffected':[res.rowsAffected[0]]}
 
         return affected;    
-
-    
     }
+
+    async gethistorycustomers(){
+        const conn = await mssqlcon.getConnection();
+        const res = await conn.request().execute("geCustomerMasterHistory");
+        return res.recordset;
+    }
+
+
 }
 
 module.exports=new CustomerMasterMssql();

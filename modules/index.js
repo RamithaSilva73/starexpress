@@ -36,6 +36,10 @@ class Module {
     const threadconsumptioncontroller = require('./threadconsumption/threadconsumption.controller');
     new threadconsumptioncontroller(this.app);
 
+    const smvcontroller = require('./smv/smv.controller');
+    new smvcontroller(this.app);
+
+  
     const similarstylecontroller = require('./SimStyles/SimStylesController');
     new similarstylecontroller(this.app);
 
@@ -48,6 +52,40 @@ class Module {
 
     const AssetInvController=require('./AssetInventory/AssetInventory.controller');
     new AssetInvController(this.app);
+
+    const IswSummaryController =require('./IswSummary/IswSummaryController');
+    new IswSummaryController(this.app);
+
+
+    const LotMasterDataController=require('./LotMasterData/LotMasterDataController');
+    new LotMasterDataController(this.app);
+
+    const SewWithoutController = require('./SewWithout/SewWithoutController');
+    new SewWithoutController(this.app);
+
+    const SammpleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
+    new SammpleSubmissionController(this.app);
+    
+    const SampleDispatchController =require('./SampleDispatch/SampleDispatchController');
+    new SampleDispatchController(this.app)
+
+    const SewsummaryController=require('./SewSummary/Sewsummary.controller');
+    new SewsummaryController(this.app)
+  
+    const SampleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
+    new SampleSubmissionController(this.app);
+
+    const SizeRangeController =require('./SizeRange/SizeRangeController');
+    new SizeRangeController(this.app);
+
+    const PreProdutionController =require('./PreProduction/PreProductionController');
+    new PreProdutionController(this.app);
+
+    const ExceptionController =require('./Exceptions/exception.controller');
+    new ExceptionController(this.app);
+    
+   }  
+
 
 
    }

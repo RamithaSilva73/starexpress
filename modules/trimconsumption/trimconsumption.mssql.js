@@ -30,6 +30,7 @@ class trimconsumptionMSSql {
     return data;
   }
 
+
   async getPendtrimconsumption() {
     const conn = await mssqlcon.getConnection();    
     var para = 'PEN'
@@ -57,25 +58,26 @@ class trimconsumptionMSSql {
     return data;
   }
 
+
    async addtrimconsumption(trim) {
     console.log('chk')
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("nTrackingNumber", trim.request.TrackingNumber)
-    .input("cTrimType", trim.request.TrimConsumptionType)
+    .input("nTrackingNumber",sql.VarChar(50), trim.request.TrackingNumber)
+    .input("cTrimType",sql.VarChar(25), trim.request.TrimConsumptionType)
     .input("nPocNumber", trim.request.POCNumber)
     .input("nSampleDocNumber", trim.request.SampleDocumentNumber)
-    .input("cSampletype", trim.request.SampleType)
-    .input("cSampleLinecd", trim.request.SampleLineCode)
-    .input("cGarmntType", trim.request.GarmentType)
-    .input("cBuyingHouse", trim.request.BuyingHouse)
-    .input("cCustomer", trim.request.Customer)
-    .input("cBrand", trim.request.Brand)
-    .input("nStyleNumber", trim.request.StyleCode)
-    .input("cStyleName", trim.request.StyleNumber)
-    .input("cSeason", trim.request.Season)
-    .input("cMerchant", trim.request.MerchandiserName)
-    .input("cComment", trim.request.Comments) 
+    .input("cSampletype",sql.VarChar(20) ,trim.request.SampleType)
+    .input("cSampleLinecd",sql.VarChar(3), trim.request.SampleLineCode)
+    .input("cGarmntType",sql.VarChar(20), trim.request.GarmentType)
+    .input("cBuyingHouse",sql.VarChar(20), trim.request.BuyingHouse)
+    .input("cCustomer",sql.VarChar(20), trim.request.Customer)
+    .input("cBrand",sql.VarChar(40), trim.request.Brand)
+    .input("nStyleNumber",sql.VarChar(25), trim.request.StyleCode)
+    .input("cStyleName",sql.VarChar(25), trim.request.StyleNumber)
+    .input("cSeason",sql.VarChar(20), trim.request.Season)
+    .input("cMerchant",sql.VarChar(15), trim.request.MerchandiserName)
+    .input("cComment",sql.VarChar(500), trim.request.Comments) 
    
     .execute("addtrimconsumption");
 
@@ -83,17 +85,24 @@ class trimconsumptionMSSql {
 
      for(let i = 0; i < trim.lines.length; i++){
       const res1 = await conn.request()
-      .input("nTrackingNumber", trim.request.TrackingNumber)
-      .input("cItemType", trim.lines[i].ItemType)
-      .input("cItemSpec", trim.lines[i].ItemSpecification)
-      .input("cPlacement", trim.lines[i].Placement)
-      .input("cSize", trim.lines[i].Size)
-      .input("cUOM", trim.lines[i].UOM)
+      .input("nTrackingNumber",sql.VarChar(50), trim.request.TrackingNumber)
+      .input("cItemType",sql.VarChar(25), trim.lines[i].ItemType)
+      .input("cItemSpec",sql.VarChar(50), trim.lines[i].ItemSpecification)
+      .input("cPlacement",sql.VarChar(50), trim.lines[i].Placement)
+      .input("cSize",sql.VarChar(15), trim.lines[i].Size)
+      .input("cUOM",sql.VarChar(5), trim.lines[i].UOM)
       .input("cConsumption", trim.lines[i].ConsumptionPerGarment)
       .execute("addtrimconsumptiondtl");
      } 
- 
-    return res;  
+     const res2 = await conn.request()
+     .input("nTrackingNumber", trim.request.TrackingNumber)
+     .execute("AddtrimJob");
+     var affected = {
+      'Effected Headers' :[res.rowsAffected[0]],
+      'Effected Lines  ' :[p]
+    };
+
+    return affected;  
  }
 
 }

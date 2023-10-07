@@ -8,9 +8,10 @@ class trimconsumptioncontroller {
         router.post('/', trimconsumption.addtrimconsumption);                 
         router.get('/', trimconsumption.getPendtrimconsumption);
         
+
      //   router.put('/', stylemaster.updatestyle);
      //   router.delete('/:id', stylemaster.deletestyle);
-        app.use('/api/v2/trimconsumption', router);
+        app.use('/api/v1/trimconsumption', router);
 
     }
 }

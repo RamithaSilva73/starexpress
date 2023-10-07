@@ -7,7 +7,6 @@ const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 exports.addFactory= asyncErrorHandler(async(req, res,next) => {
   const outVal = await validation.FactoryValidation(req,res)      
 
-
   if(outVal.trim()!=='OK') {
     const err = new customError(outVal,406)
     return next(err) 
@@ -16,6 +15,14 @@ exports.addFactory= asyncErrorHandler(async(req, res,next) => {
   const output = await FactoryMasterMssql.AddFactory(req.body);
   res.status(200).send(output);
 })
+
+exports.getfactoryhistory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await FactoryMasterMssql.gethistoryfactory(req.body);
+  res.status(200).send(output);
+
+})
+
 
 
 

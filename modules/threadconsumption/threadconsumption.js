@@ -1,34 +1,49 @@
 const threadconsumptionMSSql = require('./threadconsumption.mssql');
-class threadconsumption {
-    async getAllthreadconsumption(req, res) {
-      try {
-        console.log(123)
-         const output = await threadconsumptionMSSql.getAllthreadconsumption();
-         res.send(output);   
-      }
-      catch (error) {
-      res.status(500).json(error)     
-    }
- }
+const validation = require('./threadconsumptionValidation')
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
- async getPendthreadconsumption(req, res) {
-  try {
-     const output = await threadconsumptionMSSql.getPendthreadconsumption();
-     res.send(output);     
+exports.addthreadconsumption= asyncErrorHandler(async(req, res,next) => {
+
+  const outVal = await validation.threadconsumptionValidation(req,res)      
+
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
   }
-  catch (error) {
-  res.status(500).json(error)
-}
-}
-  async addthreadconsumption(req, res) {
-   try {
-     const output = await threadconsumptionMSSql.addthreadconsumption(req.body);
-     res.status(200).send(output);
-   }
-   catch (error) {
-    res.status(500).json(error);
-   }
- }
 
-}
-module.exports = new threadconsumption();
+
+  const output = await threadconsumptionMSSql.addthreadconsumption(req.body);
+  res.status(200).send(output);
+
+})
+
+exports.getAllthreadconsumption= asyncErrorHandler(async(req, res,next) => {
+
+  const outVal = await validation.threadconsumptionValidationall(req,res)      
+
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
+  }
+
+
+  const output = await threadconsumptionMSSql.getAllthreadconsumption(req.body);
+  res.status(200).send(output);
+
+})
+
+exports.getPendthreadconsumption = asyncErrorHandler(async(req, res,next) => {
+
+  const outVal = await validation.threadconsumptionValidationpend(req,res)      
+
+  if(outVal.trim()!=='OK') {
+    const err = new customError(outVal,406)
+    return next(err) 
+  }
+
+
+  const output = await threadconsumptionMSSql.getPendthreadconsumption(req.body);
+  res.status(200).send(output);
+
+})

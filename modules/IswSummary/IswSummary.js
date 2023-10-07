@@ -12,3 +12,11 @@ exports.addIswSummary= asyncErrorHandler(async(req, res,next) => {
    const output = await IswSummaryMssql.addIswSummary(req.body);
    res.status(200).send(output);
 })
+
+
+exports.getiswsummaryhistory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await IswSummaryMssql.gethistoryiswsummary(req.body);
+  res.status(200).send(output);
+
+})
