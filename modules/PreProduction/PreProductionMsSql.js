@@ -8,7 +8,7 @@ class preprodMsSql {
         const conn = await mssqlcon.getConnection();
         const res = await conn.request()
         .input("TransactionType",sql.VarChar(1),preprod.TransactionType)
-        .input("TrackingNumber",sql.VarChar(20),preprod.TrackingNumber)
+        .input("TrackingNumber",sql.VarChar(50),preprod.TrackingNumber)
         .input("ProductionStage", sql.VarChar(3),preprod.ProductionStage)
         .input("CssDate",preprod.CSSDate)
         .input("Comment",sql.VarChar(50),preprod.Comment)
