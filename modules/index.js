@@ -77,7 +77,9 @@ class Module {
     const PreProdutionController =require('./PreProduction/PreProductionController');
     new PreProdutionController(this.app);
 
-    
+    const ITAssetcontroller =require('./ITAsset/ITAssetController');
+    new ITAssetcontroller(this.app);
+
 
 
    }  

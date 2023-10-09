@@ -3,7 +3,7 @@ const mssqlcon = require("../../dbconnection")
 class CheckStyle
 
 {
-    async getITAsset(req,res)
+    async ITAssetValidation(req,res)
     {
         const ret = 'OK'
         return ret
