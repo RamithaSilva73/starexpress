@@ -1,7 +1,5 @@
-//const GarmentTypesMssql=require('./GarmentTypeMssql');
+
 const StyleMasterFileMssql=require('./StyleMasterMssql');
-
-
 
 const validation = require('./StyleMasterValidation')
 const customError = require('./../../utilities/CustomError')
