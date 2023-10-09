@@ -26,6 +26,18 @@ class SewWithoutrMSSql {
  }
 
 
+
+
+
+ async gethistorySewwithout (){
+        
+  const conn=await mssqlcon.getConnection();
+  const res=await conn.request().execute("getSewwithoutHistory");
+  return res.recordset;
+
+}
+
+
 }
 
 

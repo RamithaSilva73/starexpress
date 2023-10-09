@@ -6,6 +6,7 @@ class simstylescontroller {
     constructor(app) 
     {
         router.post('/', simstyles.addstyle);
+        router.get('/history', simstyles.getSimstyleHistory);
         app.use('/api/v1/similarstyle', router);
     }
 }

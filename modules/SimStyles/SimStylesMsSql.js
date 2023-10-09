@@ -18,5 +18,18 @@ class simstylesMsSql {
         };
         return affected;
      }
+
+
+     async gethistorySimStyle (){
+        
+        const conn=await mssqlcon.getConnection();
+        const res=await conn.request().execute("getSimstyleHistory");
+        return res.recordset;
+      
+      }
+      
+
+
+
 }
 module.exports = new simstylesMsSql(); 
