@@ -29,6 +29,5 @@ class preprodMsSql {
         return res.recordset;      
       }
       
-
 }
 module.exports = new preprodMsSql(); 

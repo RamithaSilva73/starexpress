@@ -6,7 +6,7 @@ class preprodcontroller {
     constructor(app) 
     {
         router.post('/', preprod.addpreprod);
-        router.post('/history', preprod.getpreproductionHistory);
+        router.get('/history', preprod.getpreproductionHistory);
         app.use('/api/v1/preproduction', router);
     }
 
