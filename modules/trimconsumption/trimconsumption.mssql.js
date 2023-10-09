@@ -58,11 +58,12 @@ class trimconsumptionMSSql {
     return data;
   }
 
+
    async addtrimconsumption(trim) {
     console.log('chk')
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("nTrackingNumber", trim.request.TrackingNumber)
+    .input("nTrackingNumber",sql.VarChar(50), trim.request.TrackingNumber)
     .input("cTrimType",sql.VarChar(25), trim.request.TrimConsumptionType)
     .input("nPocNumber", trim.request.POCNumber)
     .input("nSampleDocNumber", trim.request.SampleDocumentNumber)
@@ -78,14 +79,13 @@ class trimconsumptionMSSql {
     .input("cMerchant",sql.VarChar(15), trim.request.MerchandiserName)
     .input("cComment",sql.VarChar(500), trim.request.Comments) 
    
-
     .execute("addtrimconsumption");
 
       const p = trim.lines.length;
 
      for(let i = 0; i < trim.lines.length; i++){
       const res1 = await conn.request()
-      .input("nTrackingNumber", trim.request.TrackingNumber)
+      .input("nTrackingNumber",sql.VarChar(50), trim.request.TrackingNumber)
       .input("cItemType",sql.VarChar(25), trim.lines[i].ItemType)
       .input("cItemSpec",sql.VarChar(50), trim.lines[i].ItemSpecification)
       .input("cPlacement",sql.VarChar(50), trim.lines[i].Placement)
@@ -97,7 +97,12 @@ class trimconsumptionMSSql {
      const res2 = await conn.request()
      .input("nTrackingNumber", trim.request.TrackingNumber)
      .execute("AddtrimJob");
-    return res;  
+     var affected = {
+      'Effected Headers' :[res.rowsAffected[0]],
+      'Effected Lines  ' :[p]
+    };
+
+    return affected;  
  }
 
 }

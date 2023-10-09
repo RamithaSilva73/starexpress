@@ -23,5 +23,16 @@ class IswSummaryMssql {
 
     return affected;
  }
+
+
+ async gethistoryiswsummary (){
+  const conn=await mssqlcon.getConnection();
+  const res=await conn.request().execute("getiswsummaryHistory");
+  return res.recordset;
+
+}
+
+
+
 }
 module.exports = new IswSummaryMssql();
