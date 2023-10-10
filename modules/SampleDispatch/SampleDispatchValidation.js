@@ -7,8 +7,8 @@ class CheckStyle
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
-        .input("oraclestylecode",req.body.StyleCode)
-        .input("SamAbbreviation",req.body.SampleTypeCode)
+        .input("TrackingNumber",req.body.TrackingNumber)
+        .input("SamAbbreviation",req.body.SamAbbreviation)
         .output("stylematch",0)
         .execute("SampleDispatchValidation")
 

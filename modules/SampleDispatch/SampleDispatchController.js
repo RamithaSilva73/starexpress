@@ -5,10 +5,9 @@ const router = express.Router();
 class SampleDispatchController {
     constructor(app) {
       
-
         router.post('/', SampleDispatch.addSampleDispatchFunction);
-        router.get('/history', SampleDispatch.getsampledispatchHistory);
-        app.use('/api/v2/sampledispatch', router);
+    
+       app.use('/api/v1/sampledispatch', router);
         
 
     }

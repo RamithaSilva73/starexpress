@@ -14,11 +14,3 @@ exports.addSampleDispatchFunction= asyncErrorHandler(async(req, res,next) => {
    const output = await SampleDispatchMssql.addSampleDispatchFunction(req.body);
    res.status(200).send(output);
 })
-
-
-exports.getsampledispatchHistory=asyncErrorHandler(async(req,res) =>{
-  
-  const output=await SampleDispatchMssql.gethistorysampledispatch(req.body);
-  res.status(200).send(output);
-
-})
