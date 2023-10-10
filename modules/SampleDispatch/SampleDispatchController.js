@@ -6,8 +6,8 @@ class SampleDispatchController {
     constructor(app) {
       
         router.post('/', SampleDispatch.addSampleDispatchFunction);
-    
-       app.use('/api/v1/sampledispatch', router);
+        router.get('/history', SampleDispatch.getsampledispatchHistory);
+        app.use('/api/v1/sampledispatch', router);
         
 
     }

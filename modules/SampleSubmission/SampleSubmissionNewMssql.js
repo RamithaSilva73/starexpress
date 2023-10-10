@@ -24,6 +24,17 @@ class SampleSubmissionMSSql {
 
     return affected;
  }
+
+
+
+ async  gethistorysamplesubmission (){
+  const conn=await mssqlcon.getConnection();
+  const res=await conn.request().execute("getsamplesubmissionHistory");
+  return res.recordset;      
+}
+
+
+
 }
 module.exports=new SampleSubmissionMSSql();
 

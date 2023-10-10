@@ -23,7 +23,7 @@ class preprodMsSql {
         return affected;
      }
 
-     async gethistorypreproduction (){
+     async gethistorypreproduction(){
         const conn=await mssqlcon.getConnection();
         const res=await conn.request().execute("getpreproductionHistory");
         return res.recordset;      

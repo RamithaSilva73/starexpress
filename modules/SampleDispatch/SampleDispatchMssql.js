@@ -18,6 +18,13 @@ class SampleDispatchMSSql
     };
     return affected;
   }
+
+  async gethistorysampledispatch(){
+    const conn=await mssqlcon.getConnection();
+    const res=await conn.request().execute("getsampledispatchHistory");
+    return res.recordset;      
+  }
+
 }
  module.exports = new SampleDispatchMSSql();
 
