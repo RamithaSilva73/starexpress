@@ -15,3 +15,11 @@ exports.samplesubmission= asyncErrorHandler(async(req, res,next) => {
   res.status(200).send(output);
 })
 
+
+
+exports.getsamplesubmissionHistory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await samplesubmissionMssql.gethistorysamplesubmission(req.body);
+  res.status(200).send(output);
+
+})
