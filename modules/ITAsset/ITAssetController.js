@@ -6,7 +6,7 @@ class ITAssetcontroller {
     constructor(app) 
     {
         router.get('/', ITAsset.getITAsset);
-        app.use('/api/v1/similarstyle', router);
+        app.use('/api/v2/machines/itassets', router);
     }
 }
 module.exports = ITAssetcontroller;

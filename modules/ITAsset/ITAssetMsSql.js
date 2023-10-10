@@ -3,20 +3,12 @@
 const mssqlcon = require('../../dbconnection');
 sql = require('mssql')
 
-class simstylesMsSql {
-    async addstyle(simstyles) {
+class ITAssetMsSql {
+    async getITAsset() {
         const conn = await mssqlcon.getConnection();
         const res = await conn.request()
-        .input("TransactionType",sql.VarChar(1),simstyles.TransactionType)
-        .input("TrackingNumberMain",sql.VarChar(50),simstyles.MainStyleTrackingNumber)
-        .input("TrackingNumberSimilar", sql.VarChar(50),simstyles.SimilarStyleTrackingNumber)
-        .input("SimilarBody", simstyles.BodyNo)
-        .execute("addsimstyle");
-        // return res;
-        var affected = {
-            'RecordsEffected':[res.rowsAffected[0]]
-        };
-        return affected;
-     }
+        .execute("getITAsset");
+        return res.recordset;
+    }
 }
-module.exports = new simstylesMsSql(); 
+module.exports = new ITAssetMsSql(); 

@@ -83,6 +83,10 @@ class Module {
 
     const ExceptionController =require('./Exceptions/exception.controller');
     new ExceptionController(this.app);
+
+    const ITAssetcontroller =require('./ITAsset/ITAssetController');
+    new ITAssetcontroller(this.app);
+
     
    }  
 
