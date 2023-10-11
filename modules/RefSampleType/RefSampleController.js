@@ -6,7 +6,8 @@ class RefSampleTypeController {
     constructor(app) {
        
         router.post('/',RefSampleType.addRefSampleType);
-        app.use('/api/v2/refsampletype', router);
+        router.get('/history',RefSampleType.getrefsampletypeHistory);
+        app.use('/api/v1/refsampletype', router);
 
     }
 }
