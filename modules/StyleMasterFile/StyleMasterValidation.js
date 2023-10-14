@@ -14,6 +14,7 @@ class sqlError
         .input("cTrackingNumber",req.body.TrackingNumber)
         .input("cShipFty",req.body.ShipFty)
         .input("cWashNonWash",req.body.WashNonWash)
+        .input("cStatus",req.body.Status)
         .output("ValidReturnVal",0)
         .execute("StyleMasterValidation")
 
