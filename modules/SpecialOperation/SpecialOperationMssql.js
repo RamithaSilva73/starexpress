@@ -1,4 +1,5 @@
 const mssqlcon=require('../../dbconnection');
+sql=require('mssql');
 
 class SpecialOperationMssql {
 
@@ -7,12 +8,16 @@ class SpecialOperationMssql {
         
         const conn=await mssqlcon.getConnection();
         const res=await conn.request()
-        .input("cTransactionType",SpecialOP.TransactionType)
 
-        .input("cSpoCode",SpecialOP.SPOCode )
-        .input("cDescription", SpecialOP.SPODescription)
+        .input("cTransactionType",sql.VarChar(1),SpecialOP.TransactionType)
+        .input("cSpoCode",sql.VarChar(30),SpecialOP.SPOCode )
+        .input("cDescription", sql.VarChar(500),SpecialOP.SPODescription)
+
         .execute("AddSpecialOperation");
-        return res;        
+        
+        var affected={'RecordsEffected':[res.rowsAffected[0]]}
+
+        return affected;   
     }
 }
 

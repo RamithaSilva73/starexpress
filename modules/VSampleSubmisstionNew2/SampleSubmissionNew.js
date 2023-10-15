@@ -1,15 +1,17 @@
-const SampleSubmisstionNewtMssql = require('./SampleSubmissionNewMssql')
 
-class SampleSubmisstionNew {
-    async addSampleSubmission(req, res) {
-        try {
-        const output = await SampleSubmisstionNewtMssql.addSampleSubmission(req.body);
-        res.status(200).send(output);
-        }
-        catch (error) {
-        res.status(500).json(error);
-        }
-  }
-}
+const SampleSubmisstionMssql = require('./SampleSubmissionNewMssql');
+const validation = require('./SampleSubmissionValidation');
+const customError = require('./../../utilities/CustomError')
+const asyncErrorHandler = require('./../../utilities/asyncErrorHandler');
 
-module.exports = new SampleSubmisstionNew
+
+exports.addSampleSubmission= asyncErrorHandler(async(req, res,next) => {
+   const outVal = await validation.SampleSubValidation(req,res)  
+
+   if(outVal.trim()!=='OK') {
+     const err = new customError(outVal,406)
+     return next(err) 
+   }
+   const output = await SampleSubmisstionMssql.addSampleSubmission(req.body);
+   res.status(200).send(output);
+})
