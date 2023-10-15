@@ -75,6 +75,7 @@ class smvMSSql {
      var affected = {
         'Records Effected' :[res.rowsAffected[0]]
       }; 
+      
     return affected;  
  }
 
