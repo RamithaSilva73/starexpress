@@ -61,7 +61,7 @@ class threadconsumptionMSSql {
    async addthreadconsumption(thrd) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("nTrackingNumber", thrd.Request.TrackingNumber)
+    .input("nTrackingNumber",sql.VarChar(50), thrd.Request.TrackingNumber)
     .input("cMerchandiserName",sql.VarChar(15), thrd.Request.MerchandiserName)
     .input("cBuyingHouse",sql.VarChar(20), thrd.Request.BuyingHouse)
     .input("cCustomer",sql.VarChar(5), thrd.Request.Customer)
@@ -73,7 +73,7 @@ class threadconsumptionMSSql {
       const p = thrd.Lines.length;
      for(let i = 0; i < p; i++ ){
       const res1 = await conn.request()
-      .input("nTrackingNumber", thrd.Request.TrackingNumber)
+      .input("nTrackingNumber",sql.VarChar(50), thrd.Request.TrackingNumber)
       .input("nTicket", thrd.Lines[i].Ticket)
       .input("nTex", thrd.Lines[i].Tex)
       .input("nCount", thrd.Lines[i].Count)
@@ -83,10 +83,13 @@ class threadconsumptionMSSql {
       .execute("addthreadconsumptiondtl");
      } 
      const res2 = await conn.request()
-     .input("nTrackingNumber", thrd.Request.TrackingNumber)
-     
+     .input("nTrackingNumber", thrd.Request.TrackingNumber)    
      .execute("Addthrdjob"); 
-    return res;  
+     var affected = {
+      'Effected Headers' :[res.rowsAffected[0]],
+      'Effected Lines  ' :[p]
+    }; 
+    return affected;  
  }
 
 }
