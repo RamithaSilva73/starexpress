@@ -79,5 +79,15 @@ class smvMSSql {
     return affected;  
  }
 
+
+ async getHistorysmv(){
+  const conn = await mssqlcon.getConnection();
+  const res = await conn.request().execute("gethistorysmv");
+  return res.recordset;
+}
+
+
+
+
 }
 module.exports = new smvMSSql();

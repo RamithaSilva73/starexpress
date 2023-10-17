@@ -92,5 +92,13 @@ class threadconsumptionMSSql {
     return affected;  
  }
 
+ async getHistorythred(){
+  const conn = await mssqlcon.getConnection();
+  const res = await conn.request().execute("gethistorythredconsmption");
+  return res.recordset;
+}
+
+
+
 }
 module.exports = new threadconsumptionMSSql();

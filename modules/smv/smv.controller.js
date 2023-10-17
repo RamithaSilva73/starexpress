@@ -7,6 +7,7 @@ class smvcontroller {
         router.get('/Completed',smv.getsmvbulletin);
         router.post('/',smv.addsmvrequest);                
         router.get('/',smv.getPendsmvrequest);
+        router.get('/history', smv.gethistrysmv);
         app.use('/api/v2/SMVRequest', router);
     }
 }

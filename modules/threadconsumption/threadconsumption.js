@@ -47,3 +47,14 @@ exports.getPendthreadconsumption = asyncErrorHandler(async(req, res,next) => {
   res.status(200).send(output);
 
 })
+
+exports.gethistrythrdconsumption=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await threadconsumptionMSSql.getHistorythred (req.body);
+  res.status(200 ).send(output);
+
+
+})
+
+
+

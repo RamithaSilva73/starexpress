@@ -7,6 +7,7 @@ class threadconsumptioncontroller {
         router.get('/Completed',threadconsumption.getAllthreadconsumption);
         router.post('/',threadconsumption.addthreadconsumption);                
         router.get('/',threadconsumption.getPendthreadconsumption);
+        router.get('/history', threadconsumption.gethistrythrdconsumption);
         app.use('/api/v2/threadconsumption', router);
     }
 }

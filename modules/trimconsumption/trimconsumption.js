@@ -46,7 +46,13 @@ exports.addtrimconsumption = asyncErrorHandler(async(req, res,next) => {
 
 })
 
+exports.gethistrytrimconsumption=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await trimconsumptionMSSql.getHistorytrim (req.body);
+  res.status(200 ).send(output);
 
+
+})
 
 
 
