@@ -32,27 +32,16 @@ class SewsummaryMSSql {
     return affected;
  }
 
+ 
 
- /* async updatestyle(style) {
-   const conn = await mssqlcon.getConnection();
-   const res = await conn.request()
-   .input("stylenumber", style.stylenumber)
-   .input("stylename", style.stylename)
-   .input("account", style.account)
-   .input("orderqty",style.orderqty)
-   .input("merchant", style.merchant)
-   .input("product", style.producttype)
-   .execute("updatestyle");
-   return res;
- }
+ async gethistorySewsummary (){
+        
+  const conn=await mssqlcon.getConnection();
+  const res=await conn.request().execute("getSewsummaryHistory");
+  return res.recordset;
+
+}
 
 
- async deletestyle(id) {
-   const conn = await mssqlcon.getConnection();
-   const res = await conn.request()
-   .input("style_id", id)
-   .execute("deletestyle");
-   return res;
- } */
 }
 module.exports = new SewsummaryMSSql();

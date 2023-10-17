@@ -16,6 +16,17 @@ exports.addpreprod= asyncErrorHandler(async(req, res,next) => {
 
 
 
+exports.getpreproductionHistory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await preprodsMssql.gethistorypreproduction(req.body);
+  res.status(200).send(output);
+
+})
+
+
+
+
+
 /* class simstyles 
 {
  async addstyle(req, res) {

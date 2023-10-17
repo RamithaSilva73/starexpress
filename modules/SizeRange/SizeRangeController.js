@@ -6,7 +6,7 @@ class simstylescontroller {
     constructor(app) 
     {
         router.post('/', sizerange.addsize);
-        app.use('/api/v2/sizerange', router);
+        app.use('/api/v1/sizerange', router);
     }
 }
 module.exports = simstylescontroller;

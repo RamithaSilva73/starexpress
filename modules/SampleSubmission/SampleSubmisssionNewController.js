@@ -6,7 +6,8 @@ class SammpleSubmissionController {
     constructor(app) {
        
         router.post('/', Samplesubmission.addSampleSubmission);
-        app.use('/api/v2/samplesubmission', router);
+        router.get('/history', Samplesubmission.getsamplesubmissionHistory);
+        app.use('/api/v1/samplesubmission', router);
 
     }
 }

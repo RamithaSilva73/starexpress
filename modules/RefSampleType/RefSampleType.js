@@ -14,3 +14,12 @@ exports.addRefSampleType= asyncErrorHandler(async(req, res,next) => {
    const output = await RefSampleTypeMSSql.addRefSampleType(req.body);
    res.status(200).send(output);
 })
+
+
+
+exports.getrefsampletypeHistory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await RefSampleTypeMSSql.gethistoryrefsampletype(req.body);
+  res.status(200).send(output);
+
+})
