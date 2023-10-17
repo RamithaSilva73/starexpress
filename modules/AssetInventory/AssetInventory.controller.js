@@ -9,6 +9,8 @@ class AssetInvController
     {
        // console.log("hello");
         router.get('/',AssetInvOperation.getAssetInventory);
+
+        router.get('/history',AssetInvOperation.getHistoryAssetInventory);
         app.use('/api/v2/MIAssets',router);
     }
 }

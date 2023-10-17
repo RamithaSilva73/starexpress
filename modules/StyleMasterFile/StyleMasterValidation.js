@@ -15,6 +15,7 @@ class sqlError
         .input("cShipFty",req.body.ShipFty)
         .input("cWashNonWash",req.body.WashNonWash)
         .input("cStatus",req.body.Status)
+        .input("cCuttingType",req.body.CuttingType)
         .output("ValidReturnVal",0)
         .execute("StyleMasterValidation")
 

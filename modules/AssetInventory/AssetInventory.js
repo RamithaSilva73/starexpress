@@ -19,3 +19,10 @@ exports.getAssetInventory= asyncErrorHandler(async(req, res,next) => {
     res.status(200).send(output);
     }
 )
+
+exports.getHistoryAssetInventory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await GetAssetInv.getHistoryAssetInventory (req.body);
+  res.status(200).send(output);
+
+})
