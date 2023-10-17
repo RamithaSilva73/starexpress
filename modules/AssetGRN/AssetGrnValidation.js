@@ -7,6 +7,9 @@ class sqlError
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("cTransactionType",req.body.TransactionType)
+        .input("cReceivingTransactionId",req.body.ReceivingTransactionId)
+        .input("cInventoryOrg",req.body.InventoryOrg)
+        
        // .input("cTransactionType",req.body.GRNNumber)
        // .input("cTransactionType",req.body.GRNLine)
         

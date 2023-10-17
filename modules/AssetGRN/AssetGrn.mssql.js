@@ -9,28 +9,28 @@ async addNewAssetGrn(NewAssetGrn)
         const res=await conn.request()
         
         .input("cTransactionType",sql.VarChar(1),NewAssetGrn.TransactionType )
-        .input("cGRNNumber",NewAssetGrn.GRNNumber)
-        .input("cGRNLine",NewAssetGrn.GRNLine)
-        .input("cItemDescription",NewAssetGrn.ItemDescription)
-        .input("cItemCode",NewAssetGrn.ItemCode)
-        .input("cUnitOfMeasurement",NewAssetGrn.UnitOfMeasurement)
-        .input("cItemID",NewAssetGrn.ItemID)
-        .input("nQuantity",NewAssetGrn.Quantity)
-        .input("cItemCategory",NewAssetGrn.ItemCategory)
-        .input("cAssetCategory",NewAssetGrn.AssetCategory)
+        .input("cGRNNumber",sql.VarChar(12),NewAssetGrn.GRNNumber)
+        .input("cGRNLine",sql.VarChar(4),NewAssetGrn.GRNLine)
+        .input("cItemDescription",sql.VarChar(250),NewAssetGrn.ItemDescription)
+        .input("cItemCode",sql.VarChar(20),NewAssetGrn.ItemCode)
+        .input("cUnitOfMeasurement",sql.VarChar(3),NewAssetGrn.UnitOfMeasurement)
+        .input("cItemID",sql.Int,NewAssetGrn.ItemID)
+        .input("nQuantity",sql.Numeric(10,2),NewAssetGrn.Quantity)
+        .input("cItemCategory",sql.VarChar(40),NewAssetGrn.ItemCategory)
+        .input("cAssetCategory",sql.VarChar(30),NewAssetGrn.AssetCategory)
         .input("dWarrantyDate",NewAssetGrn.WarrantyDate)
-        .input("cPONumber",NewAssetGrn.PONumber)
-        .input("nPOheaderID",NewAssetGrn.POheaderID)
-        .input("cPOlineNumber",NewAssetGrn.POlineNumber)
-        .input("nPOLineID",NewAssetGrn.POLineID)
-        .input("cOperatingUnit",NewAssetGrn.OperatingUnit)
-        .input("cInventoryOrg",NewAssetGrn.InventoryOrg)
-        .input("cOrganizationID",NewAssetGrn.OrganizationID)
-        .input("cMake",NewAssetGrn.Make)
-        .input("cReceivingTransactionId",NewAssetGrn.ReceivingTransactionId)
-        .input("cModel",NewAssetGrn.Model)
-        .input("cfactoryloc",NewAssetGrn.factoryloc)
-        .input("nallocQty",NewAssetGrn.allocQty)
+        .input("cPONumber",sql.VarChar(10),NewAssetGrn.PONumber)
+        .input("nPOheaderID",sql.Int,NewAssetGrn.POheaderID)
+        .input("cPOlineNumber",sql.VarChar(4),NewAssetGrn.POlineNumber)
+        .input("nPOLineID",sql.Int,NewAssetGrn.POLineID)
+        .input("cOperatingUnit",sql.VarChar(3),NewAssetGrn.OperatingUnit)
+        .input("cInventoryOrg",sql.VarChar(3),NewAssetGrn.InventoryOrg)
+        .input("cOrganizationID",sql.Int,NewAssetGrn.OrganizationID)
+        .input("cMake",sql.VarChar(40),NewAssetGrn.Make)
+        .input("cReceivingTransactionId",sql.Numeric(18,0),NewAssetGrn.ReceivingTransactionId)
+        .input("cModel",sql.VarChar(40),NewAssetGrn.Model)
+        .input("cfactoryloc",sql.VarChar(3),NewAssetGrn.factoryloc)
+        .input("nallocQty",sql.Numeric(10,0),NewAssetGrn.allocQty)
 
         .execute("AddApiAssetGRN");
     
@@ -38,6 +38,18 @@ async addNewAssetGrn(NewAssetGrn)
         return affected;    
 
     }
+
+    async gethistoryasstgrn(){
+        const conn = await mssqlcon.getConnection();
+        const res = await conn.request().execute("gethistoryasstgrn");
+        return res.recordset;
+    }
+
+
+
+
+
+
 }
 
 module.exports=new AssetGgrnMssql();
