@@ -18,6 +18,13 @@ async GetAssetInventory(AssetInventory)
        // return affected;       
 }
 
+  async getHistoryAssetInventory(){
+  const conn = await mssqlcon.getConnection();
+  const res = await conn.request().execute("getMachineInventoryHistory");
+  return res.recordset;
+}
+
+
 }
 
 module.exports = new AssetInventoryMssql();
