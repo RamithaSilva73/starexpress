@@ -8,7 +8,7 @@ class smvcontroller {
         router.post('/',smv.addsmvrequest);                
         router.get('/',smv.getPendsmvrequest);
         router.get('/history', smv.gethistrysmv);
-        app.use('/api/v2/SMVRequest', router);
+        app.use('/api/v1/SMVRequest', router);
     }
 }
 module.exports = smvcontroller;
