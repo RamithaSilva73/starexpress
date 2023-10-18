@@ -18,4 +18,13 @@ exports.addNewGRN= asyncErrorHandler(async(req, res,next) => {
     const output = await NewAssetGrn.addNewAssetGrn(req.body);
     res.status(200).send(output);
     }
+    
 )
+
+exports.gethistoryassetgrn = asyncErrorHandler(async(req,res) =>{
+  
+  const output=await NewAssetGrn.gethistoryasstgrn (req.body);
+  res.status(200 ).send(output);
+
+
+})

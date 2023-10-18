@@ -4,25 +4,25 @@ class smv
 {
     async smvrequestValidation(req,res)
     {
-/*         const p = req.body.Lines.length;
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
-        .input("cStyleNumber", req.body.Request.StyleNumber)
-        .input("cStyleCode", req.body.Request.StyleCode)
-        .input("cSeason", req.body.Request.Season)
-        .input("cBrand", req.body.Request.Brand)
-        .output("threadmatch",0)
-        .execute("thrdconsmptionValidation")
-        var ret1 = result.output.threadmatch
-        if (p == 0){
-        ret1 = 'Line Details Cannot Be Empty'}
-
+        .input("cTrackingNumber",sql.VarChar(50), req.body.TrackingNumber) 
+        .input("cGarmentType", req.body.GarmentType)
+        .input("cBrand", req.body.Brand)
+        .input("cSeason", req.body.Season)
+        .input("cPackingMethod", req.body.PackingMethod)
+        .input("cFabricContent", req.body.FabricContent)
+        .input("cSampleType", req.body.SampleType)
+        .input("cCutType", req.body.CutType)
+        .input("cBrandNumber", req.body.BrandNumber)
+        .input("cSampleRoom", req.body.SampleRoom)
+        .input("cLayingType", req.body.LayingType)
+        .input("cStylNumber", req.body.StyleNumber)
+        .output("smvmatch",0)
+        .execute("smvrequestValidation")
+        var ret1 = result.output.smvmatch
         return ret1
-        */
-        const ret1 = 'OK'
-        return ret1
-
-
+        
     }
 
     async smvrequestpendValidation(req,res) 
