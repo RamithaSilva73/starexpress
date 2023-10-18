@@ -13,3 +13,12 @@ exports.addLotMasterData= asyncErrorHandler(async(req, res,next) => {
    const output = await LotMasterMssql.addLotMasterData(req.body);
    res.status(200).send(output);
 })
+
+
+
+exports.getlotmasterdataHistory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await LotMasterMssql.gethistorylotmasterdata(req.body);
+  res.status(200).send(output);
+
+})

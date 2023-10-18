@@ -8,7 +8,9 @@ class AddFactoryController{
     constructor(app){
         router.post('/',StarFactory.addFactory);
        // router.get('/',StarFactory.getAllFactory);
-        app.use('/api/v2/factory',router);
+       router.get('/history',StarFactory.getfactoryhistory);
+       app.use('/api/v1/factory',router);
+
     }
 
 

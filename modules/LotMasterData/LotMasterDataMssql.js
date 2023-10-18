@@ -5,14 +5,14 @@ class LotMasterDataMssql {
   async addLotMasterData(style) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
-    .input("Transaction", style.TransactionType)
-    .input("Stylecode", style.StyleCode)
+    .input("TransactionType", style.TransactionType)
+    .input("TrackingNumber", style.TrackingNumber)
     .input("LotName", style.LotName)
-    .input("CIDate", style.CiDate)
+    .input("CIDate", style.CIDate)
     .input("DeliveryDate", style.DeliveryDate)
     .input("Quantity", style.Quantity)
     .input("EnterDate", style.EnterDate)
-    .input("ConfirmOn", style.ConFirmOn)
+    .input("ConfirmOn", style.ConfirmOn)
     
     .execute("AddMasterLotdata");
   
@@ -22,6 +22,13 @@ class LotMasterDataMssql {
 
 return affected;
   }
+
+  async gethistorylotmasterdata(){
+    const conn=await mssqlcon.getConnection();
+    const res=await conn.request().execute("getlotmasterdataHistory");
+    return res.recordset;      
+  }
+  
 
 }
 module.exports = new LotMasterDataMssql();

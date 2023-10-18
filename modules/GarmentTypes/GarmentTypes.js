@@ -18,3 +18,11 @@ exports.addGarmentTypes= asyncErrorHandler(async(req, res,next) => {
 })
 
 
+exports.getgarmenttypehistory=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await GarmentTypesMssql.gethistorygarmenttype(req.body);
+  res.status(200).send(output);
+
+})
+
+

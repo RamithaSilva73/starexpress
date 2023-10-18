@@ -2,15 +2,15 @@ const mssqlcon = require("../../dbconnection")
 
 class CheckStyle
 {
-    async SimStylesValidation(req,res)
+    async PreProdValidation(req,res)
     {
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
-        .input("oraclestylecode",req.body.stylecode)
-        .input("OracleSimilarCode",req.body.similarstylecode)
+        .input("TrackingNumber",req.body.TrackingNumber)
+        .input("FtyCode",sql.VarChar(3),req.body.FtyCode)
         .output("stylematch",0)
-        .execute("simStylesValidation")
+        .execute("PreProdValidation")
         return result.output.stylematch
     }
 }

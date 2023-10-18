@@ -6,7 +6,8 @@ class MasterlotDataController {
     constructor(app) {
        
         router.post('/',LotMasterData.addLotMasterData);
-        app.use('/api/v2/masterlotdata', router);
+        router.get('/history',LotMasterData.getlotmasterdataHistory);
+        app.use('/api/v1/masterlotdata', router);
 
     }
 }
