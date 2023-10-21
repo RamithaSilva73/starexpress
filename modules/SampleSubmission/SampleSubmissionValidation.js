@@ -7,10 +7,12 @@ class CheckStyle
         const conn = await mssqlcon.getConnection();
         const result = await conn.request()
         .input("TransactionType",req.body.TransactionType)
-        .input("SampleTypeCode",req.body.SampleTypeCode)
+        .input("TrackingNumber",req.body.TrackingNumber)
+        .input("SampleType",req.body.SampleType)
+        .input("SampleRoom",req.body.SamRoomName)
         .output("stylematch",0)
-        .execute("SampleSubmisstionValidation")
-
+        .execute("SampleSubmissionValidation")
+     
         return result.output.stylematch
     }
 }

@@ -6,9 +6,9 @@ class SewsummaryController {
     constructor(app) {
       
 
-        router.post('/', Sewsummary1.addSewsummary);
-    
-       app.use('/api/v1/Sewsummary', router);
+       router.post('/', Sewsummary1.addSewsummary);
+       router.get('/history', Sewsummary1.getSewsummaryHistory);
+       app.use('/api/v1/sewsummary', router);
         
 
     }

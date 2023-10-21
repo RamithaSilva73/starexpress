@@ -46,12 +46,13 @@ class Module {
     const AssetGrnController=require('./AssetGRN/AssetGrn.controller');
     new AssetGrnController(this.app);
 
-    const AssetInvController=require('./AssetInventory/AssetInventory.controller');
-    new AssetInvController(this.app);
 
 
     const RefSampleTypeController =require('./RefSampleType/RefSampleController');
     new RefSampleTypeController(this.app);
+
+    const AssetInvController=require('./AssetInventory/AssetInventory.controller');
+    new AssetInvController(this.app);
 
     const IswSummaryController =require('./IswSummary/IswSummaryController');
     new IswSummaryController(this.app);
@@ -63,7 +64,7 @@ class Module {
     const SewWithoutController = require('./SewWithout/SewWithoutController');
     new SewWithoutController(this.app);
 
-    const SammpleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
+    const SammpleSubmissionController =require('./SampleSubmission/SampleSubmisssionNewController');
     new SammpleSubmissionController(this.app);
     
     const SampleDispatchController =require('./SampleDispatch/SampleDispatchController');
@@ -72,21 +73,24 @@ class Module {
     const SewsummaryController=require('./SewSummary/Sewsummary.controller');
     new SewsummaryController(this.app)
   
-    const SampleSubmissionController =require('./VSampleSubmisstionNew2/SampleSubmisssionNewController');
-    new SampleSubmissionController(this.app);
+ 
 
     const SizeRangeController =require('./SizeRange/SizeRangeController');
     new SizeRangeController(this.app);
 
+    const PreProdutionController =require('./PreProduction/PreProductionController');
+    new PreProdutionController(this.app);
 
+    const ExceptionController =require('./Exceptions/exception.controller');
+    new ExceptionController(this.app);
+
+  
     
-
-
    }  
 
 
 
-}
+   }
   
   module.exports = Module
  

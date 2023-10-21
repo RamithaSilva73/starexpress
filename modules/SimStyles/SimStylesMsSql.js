@@ -8,8 +8,8 @@ class simstylesMsSql {
         const conn = await mssqlcon.getConnection();
         const res = await conn.request()
         .input("TransactionType",sql.VarChar(1),simstyles.TransactionType)
-        .input("OracleStyleCode",sql.VarChar(20),simstyles.StyleCode)
-        .input("OracleSimilarCode", sql.VarChar(20),simstyles.SimilarStyleCode)
+        .input("TrackingNumberMain",sql.VarChar(50),simstyles.MainStyleTrackingNumber)
+        .input("TrackingNumberSimilar", sql.VarChar(50),simstyles.SimilarStyleTrackingNumber)
         .input("SimilarBody", simstyles.BodyNo)
         .execute("addsimstyle");
         // return res;
@@ -18,5 +18,18 @@ class simstylesMsSql {
         };
         return affected;
      }
+
+
+     async gethistorySimStyle (){
+        
+        const conn=await mssqlcon.getConnection();
+        const res=await conn.request().execute("getSimstyleHistory");
+        return res.recordset;
+      
+      }
+      
+
+
+
 }
 module.exports = new simstylesMsSql(); 

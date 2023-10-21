@@ -6,11 +6,10 @@ const router=express.Router();
 class SpecialOparationController {
     constructor(app){
         //console.log("hello");
-        router.post('/',SpecialOperation.addSpecialOperation);
+        router.post('/',SpecialOperation.AddSpecialOperation);
 
         app.use('/api/v1/specialoperation',router);
 
-       
     }
 }
 

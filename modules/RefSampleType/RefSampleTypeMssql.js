@@ -18,5 +18,16 @@ class RefSampleTypeMSSql {
 
     return affected;
   }
+
+
+  async gethistoryrefsampletype(){
+    const conn=await mssqlcon.getConnection();
+    const res=await conn.request().execute("getrefsampletypeHistory");
+    return res.recordset;      
+  }
+
+ 
+
+
 }
 module.exports = new RefSampleTypeMSSql();
