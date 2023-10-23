@@ -38,6 +38,18 @@ async addNewAssetGrn(NewAssetGrn)
         return affected;    
 
     }
+
+    async gethistoryasstgrn(){
+        const conn = await mssqlcon.getConnection();
+        const res = await conn.request().execute("gethistoryasstgrn");
+        return res.recordset;
+    }
+
+
+
+
+
+
 }
 
 module.exports=new AssetGgrnMssql();

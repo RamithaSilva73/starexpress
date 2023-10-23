@@ -9,7 +9,8 @@ class AssetGrnController
     {
         //console.log("hello");
         router.post('/',AssetGrnOperation.addNewGRN);
-        app.use('/api/v2/GRN',router);
+        router.get('/history',AssetGrnOperation.gethistoryassetgrn);
+        app.use('/api/v1/GRN',router);
     }
 }
 

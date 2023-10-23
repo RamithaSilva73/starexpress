@@ -47,3 +47,11 @@ exports.getPendsmvrequest = asyncErrorHandler(async(req, res,next) => {
   res.status(200).send(output);
 
 })
+
+exports.gethistrysmv=asyncErrorHandler(async(req,res) =>{
+  
+  const output=await smvMSSql.getHistorysmv (req.body);
+  res.status(200 ).send(output);
+
+
+})

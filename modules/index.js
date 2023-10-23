@@ -47,6 +47,7 @@ class Module {
     new AssetGrnController(this.app);
 
 
+
     const RefSampleTypeController =require('./RefSampleType/RefSampleController');
     new RefSampleTypeController(this.app);
 
