@@ -7,8 +7,12 @@ class StyleFileController{
     constructor(app) {
         router.post('/',AddStyleFile.addNewStyle);
 
-        router.get('/style',AddStyleFile.getHistoryStyles);
-        app.use('/api/v2/style',router);
+
+        router.get('/history',AddStyleFile.getHistoryStyles);
+     
+        app.use('/api/v1/style',router);
+
+
 
     }
 }

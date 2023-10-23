@@ -10,7 +10,7 @@ class CheckStyle
         .input("TrackingNumber",req.body.TrackingNumber)
         .input("Line",req.body.LineNo)
         .input("LotName",req.body.Lot)
-        .input("FacCD",req.body.FacCD)
+        .input("FacCD",req.body.FacCd)
 
         .input("SewDate", req.body.SewDate)
 
