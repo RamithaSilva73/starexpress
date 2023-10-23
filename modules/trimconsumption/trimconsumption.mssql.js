@@ -107,9 +107,34 @@ class trimconsumptionMSSql {
 
 
  async getHistorytrim(){
-  const conn = await mssqlcon.getConnection();
+/*   const conn = await mssqlcon.getConnection();
   const res = await conn.request().execute("gethistorytrimconsmption");
-  return res.recordset;
+  return res.recordset; */
+
+  const conn = await mssqlcon.getConnection();    
+  var para = 'HIS'
+  console.log(para)
+  const res1 = await conn.request()
+  .input("cTyp",para)
+  .execute("GetAllHdgettrimconsumption");
+  const scount = res1.recordsets[0].length
+  var data = []
+  console.log(scount)
+  for (let i = 0; i < scount; i++){
+    console.log(i)
+       var dtl = res1.recordsets[0][i].TrackingNumber
+       console.log(dtl)
+      const res2 = await conn.request()
+      .input("nTrackNo",dtl)
+      .execute("GetAllDThistrimconsumption");
+      res1.lines = res2
+      data.push({
+        'request':res1.recordset[i],
+        'lines': res1.lines.recordset
+
+      }) 
+    }
+  return data;
 }
 
 
