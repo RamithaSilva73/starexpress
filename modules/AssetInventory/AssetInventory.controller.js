@@ -10,6 +10,7 @@ class AssetInvController
         router.post('/',AssetInvOperation.getAssetInventory);
         router.get('/history',AssetInvOperation.getHistoryAssetInventory);
         app.use('/api/v1/MIAssets',router); 
+
     }
 }
 
