@@ -8,9 +8,10 @@ class StyleFileController{
         router.post('/',AddStyleFile.addNewStyle);
 
 
-
         router.get('/history',AddStyleFile.getHistoryStyles);
+     
         app.use('/api/v1/style',router);
+
 
 
     }
