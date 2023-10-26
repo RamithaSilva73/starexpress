@@ -63,8 +63,8 @@ class threadconsumptionMSSql {
     const res = await conn.request()
     .input("nTrackingNumber",sql.VarChar(50), thrd.Request.TrackingNumber)
     .input("cMerchandiserName",sql.VarChar(15), thrd.Request.MerchandiserName)
-    .input("cBuyingHouse",sql.VarChar(20), thrd.Request.BuyingHouse)
-    .input("cCustomer",sql.VarChar(5), thrd.Request.Customer)
+    .input("cBuyingHouse",sql.VarChar(40), thrd.Request.BuyingHouse)
+    .input("cCustomer",sql.VarChar(40), thrd.Request.Customer)
     .input("cBrand",sql.VarChar(40), thrd.Request.Brand)
     .input("cStyleCode",sql.VarChar(25), thrd.Request.StyleCode)
     .input("cStyleNumber",sql.VarChar(25), thrd.Request.StyleNumber)
@@ -91,6 +91,14 @@ class threadconsumptionMSSql {
     }; 
     return affected;  
  }
+
+ async getHistorythred(){
+  const conn = await mssqlcon.getConnection();
+  const res = await conn.request().execute("gethistorythredconsmption");
+  return res.recordset;
+}
+
+
 
 }
 module.exports = new threadconsumptionMSSql();

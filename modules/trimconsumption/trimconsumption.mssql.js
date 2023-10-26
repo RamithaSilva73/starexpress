@@ -68,11 +68,11 @@ class trimconsumptionMSSql {
     .input("nPocNumber", trim.request.POCNumber)
     .input("nSampleDocNumber", trim.request.SampleDocumentNumber)
     .input("cSampletype",sql.VarChar(20) ,trim.request.SampleType)
-    .input("cSampleLinecd",sql.VarChar(3), trim.request.SampleLineCode)
+    .input("cSampleLinecd",sql.VarChar(10), trim.request.SampleLineCode)
     .input("cGarmntType",sql.VarChar(20), trim.request.GarmentType)
-    .input("cBuyingHouse",sql.VarChar(20), trim.request.BuyingHouse)
+    .input("cBuyingHouse",sql.VarChar(40), trim.request.BuyingHouse)
     .input("cCustomer",sql.VarChar(20), trim.request.Customer)
-    .input("cBrand",sql.VarChar(40), trim.request.Brand)
+    .input("cBrand",sql.VarChar(20), trim.request.Brand)
     .input("nStyleNumber",sql.VarChar(25), trim.request.StyleCode)
     .input("cStyleName",sql.VarChar(25), trim.request.StyleNumber)
     .input("cSeason",sql.VarChar(20), trim.request.Season)
@@ -104,6 +104,17 @@ class trimconsumptionMSSql {
 
     return affected;  
  }
+
+
+ async getHistorytrim(){
+  const conn = await mssqlcon.getConnection();
+  const res = await conn.request().execute("gethistorytrimconsmption");
+  return res.recordset;
+}
+
+
+
+
 
 }
 module.exports = new trimconsumptionMSSql();
