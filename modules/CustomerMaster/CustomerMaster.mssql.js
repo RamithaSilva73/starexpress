@@ -17,7 +17,7 @@ class CustomerMasterMssql
         .input("AccountName",sql.VarChar(40),Customers.AccountName)
         .input("Active", Customers.Active)
         .input("SampleRoom",sql.VarChar(20),Customers.SampleRoom)
-        .input("Owner",sql.VarChar(10),Customers.Owner)
+        .input("Owner",sql.VarChar(50),Customers.Owner)
         .input("GroupName",sql.VarChar(30), Customers.GroupName)
         .execute("addCustomerMaster");
 
