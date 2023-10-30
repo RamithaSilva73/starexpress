@@ -15,9 +15,11 @@ class trimconsumptionMSSql {
     for (let i = 0; i < scount; i++){
       console.log(i)
          var dtl = res1.recordsets[0][i].TrackingNumber
+         var dtl1 = res1.recordsets[0][i].RecordNo
          console.log(dtl)
         const res2 = await conn.request()
         .input("nTrackNo",dtl)
+        .input("nRecNo",dtl1)
         .execute("GetAllDTgettrimconsumption");
         res1.lines = res2
         data.push({
@@ -44,9 +46,11 @@ class trimconsumptionMSSql {
     for (let i = 0; i < scount; i++){
       console.log(i)
          var dtl = res1.recordsets[0][i].TrackingNumber
+         var dtl1 = res1.recordsets[0][i].RecordNo
          console.log(dtl)
         const res2 = await conn.request()
         .input("nTrackNo",dtl)
+        .input("nRecNo",dtl1)
         .execute("GetAllDTgettrimconsumption");
         res1.lines = res2
         data.push({
@@ -86,6 +90,7 @@ class trimconsumptionMSSql {
      for(let i = 0; i < trim.lines.length; i++){
       const res1 = await conn.request()
       .input("nTrackingNumber",sql.VarChar(50), trim.request.TrackingNumber)
+      .input("cStyleName",sql.VarChar(25), trim.request.StyleNumber)
       .input("cItemType",sql.VarChar(25), trim.lines[i].ItemType)
       .input("cItemSpec",sql.VarChar(50), trim.lines[i].ItemSpecification)
       .input("cPlacement",sql.VarChar(50), trim.lines[i].Placement)

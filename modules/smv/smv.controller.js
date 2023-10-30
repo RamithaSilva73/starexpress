@@ -11,4 +11,5 @@ class smvcontroller {
         app.use('/api/v2/SMVRequest', router);
     }
 }
+
 module.exports = smvcontroller;

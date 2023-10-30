@@ -67,7 +67,7 @@ class smvMSSql {
     .input("cSampleRoom",sql.VarChar(50), smv.SampleRoom) 
     .input("dTargetCutDate", smv.TargetCutDate) 
     .input("nOrderQuantity", smv.OrderQuantity) 
-    .input("cLayingType",sql.VarChar(7), smv.LayingType) 
+    .input("cLayingType",sql.VarChar(30), smv.LayingType) 
     .input("cSharePointURLLink",sql.VarChar(100), smv.SharePointURLLink) 
     .execute("addsmvrequest");
       const res2 = await conn.request()
