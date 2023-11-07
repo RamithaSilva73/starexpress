@@ -17,7 +17,7 @@ class smv
         .input("cBrandNumber", req.body.BrandNumber)
         .input("cSampleRoom", req.body.SampleRoom)
         .input("cLayingType", req.body.LayingType)
-        .input("cStylNumber", req.body.StyleNumber)
+        .input("cStylnNumber", req.body.StyleNumber)
         .output("smvmatch",0)
         .execute("smvrequestValidation")
         var ret1 = result.output.smvmatch

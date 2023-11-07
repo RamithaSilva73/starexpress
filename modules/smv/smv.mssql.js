@@ -15,9 +15,15 @@ class smvMSSql {
     for (let i = 0; i < scount; i++){
       console.log(i)
          var dtl = res1.recordsets[0][i].TrackingNumber
+         var dtl1 = res1.recordsets[0][i].StyleNumber
+         var dtl2 = res1.recordsets[0][i].SampleType
          console.log(dtl)
+         console.log(dtl1)
+         console.log(dtl2)
         const res2 = await conn.request()
         .input("nTrackNo",dtl)
+        .input("cStyleNumber",dtl1)
+        .input("cSampleType",dtl2)
         .execute("GetAllDTsmvbulletin");
         res1.lines = res2
         data.push({
@@ -71,7 +77,9 @@ class smvMSSql {
     .input("cSharePointURLLink",sql.VarChar(100), smv.SharePointURLLink) 
     .execute("addsmvrequest");
       const res2 = await conn.request()
-     .input("cTrackingNumber", smv.TrackingNumber)     
+     .input("cTrackingNumber", smv.TrackingNumber)   
+     .input("cStyleNumber", smv.StyleNumber)   
+     .input("cSampleTypeap", smv.SampleType) 
      .execute("Addsmvjob");   
      var affected = {
         'Records Effected' :[res.rowsAffected[0]]
