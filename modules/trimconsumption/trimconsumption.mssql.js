@@ -81,9 +81,11 @@ class trimconsumptionMSSql {
     .input("cStyleName",sql.VarChar(25), trim.request.StyleNumber)
     .input("cSeason",sql.VarChar(20), trim.request.Season)
     .input("cMerchant",sql.VarChar(15), trim.request.MerchandiserName)
-    .input("cComment",sql.VarChar(500), trim.request.Comments) 
-   
+    .input("cComment",sql.VarChar(500), trim.request.Comments)    
     .execute("addtrimconsumption");
+
+    
+
 
       const p = trim.lines.length;
 
@@ -99,8 +101,10 @@ class trimconsumptionMSSql {
       .input("cConsumption", trim.lines[i].ConsumptionPerGarment)
       .execute("addtrimconsumptiondtl");
      } 
+   
      const res2 = await conn.request()
      .input("nTrackingNumber", trim.request.TrackingNumber)
+     .input("cstnm", trim.request.StyleNumber)
      .execute("AddtrimJob");
      var affected = {
       'Effected Headers' :[res.rowsAffected[0]],
