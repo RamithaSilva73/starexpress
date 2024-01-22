@@ -24,8 +24,11 @@ const outVal = await validation.CustomerValidation(req,res)
     return next(err) 
    }
 
+
     const output = await NewAssetGrn.addNewAssetGrn(req.body);
     res.status(200).send(output);
+ 
+   
     
     }
     

@@ -22,7 +22,7 @@ class sqlError
 
         const conn = await mssqlcon.getConnection();
 
-       // console.log('tt')
+      // console.log('tt')
         for(let i = 0; i < req.body.MIData.length; i++)
         {
 
