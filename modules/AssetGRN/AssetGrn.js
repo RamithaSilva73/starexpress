@@ -15,17 +15,36 @@ const outVal = await validation.CustomerValidation(req,res)
   //   return next(err) 
   //   }
 
+  console.log(outVal)
+  
+  
    if(outVal.errorCount>0)
    {
 
-    var erroVal =  JSON.stringify(outVal.errorRecords)
+      
+      var erroVal =  JSON.stringify(outVal.errorRecords)
 
-    const err = new customError(erroVal,406)
-    return next(err) 
+      const err = new customError(erroVal,406)
+      
+      return next(err)
+
    }
 
 
     const output = await NewAssetGrn.addNewAssetGrn(req.body);
+
+
+    if(output.Results.errorCount>0)
+    {
+ 
+       var erroVal =  JSON.stringify(output.Results.errors)
+ 
+       const err = new customError(erroVal,406)
+       
+       return next(err)
+ 
+    }
+
     res.status(200).send(output);
  
    

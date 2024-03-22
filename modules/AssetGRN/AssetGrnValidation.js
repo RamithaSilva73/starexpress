@@ -26,6 +26,7 @@ class sqlError
         for(let i = 0; i < req.body.MIData.length; i++)
         {
 
+
          var current = req.body.MIData[i]
 
         
@@ -40,6 +41,7 @@ class sqlError
         
         .output("ValidReturnVal",0)
         .execute("AssetGrnValidation")
+
 
 
         //if the record is valid
@@ -74,7 +76,6 @@ class sqlError
         
     }
 
-    console.log(checkerrorarry)
         return checkerrorarry;
     }
 }
